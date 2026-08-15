@@ -20,18 +20,30 @@ const Progress = (function () {
   function setChapter(c) { localStorage.setItem(KEY_C, String(c)); }
   function getId() { return localStorage.getItem(KEY_ID) || 'AUD-0000'; }
 
+  // 已解开的镜面节点集合（由 puzzle.js 维护）
+  function getSolvedSet() {
+    try { return JSON.parse(localStorage.getItem('solvedMirrors') || '{}'); }
+    catch (e) { return {}; }
+  }
+
   // 在 #progress 容器内渲染 13 面镜子
   function renderIndicator(container, highlight) {
     if (!container) return;
     const p = getProgress();
+    const solved = getSolvedSet();
     let html = '<div class="mirror-row" title="镜面节点 ' + p + '/13">';
     for (let i = 1; i <= 13; i++) {
-      const lit = i <= p ? ' lit' : '';
-      const mark = (i === highlight && i > p) ? '◇' : (i <= p ? '◈' : '◇');
+      const lit = (i <= p || solved[i]) ? ' lit' : '';
+      const mark = (i === highlight && i > p && !solved[i]) ? '◇' : ((i <= p || solved[i]) ? '◈' : '◇');
       html += '<span class="mirror-node' + lit + '">' + mark + '</span>';
     }
     html += '</div>';
     container.innerHTML = html;
+  }
+
+  function refresh() {
+    const box = document.getElementById('progress');
+    if (box) renderIndicator(box);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -40,5 +52,5 @@ const Progress = (function () {
     if (box) renderIndicator(box);
   });
 
-  return { ensure, getProgress, setProgress, getChapter, setChapter, getId, renderIndicator };
+  return { ensure, getProgress, setProgress, getChapter, setChapter, getId, renderIndicator, refresh, getSolvedSet };
 })();

@@ -63,7 +63,12 @@
 <script src="../js/f12.js"></script>
 <script src="../js/audio.js"></script>
 <script src="../js/search.js"></script>
+<script src="../js/puzzle.js"></script>
 <script>
+  // 门控：十三面镜子未照齐，回到论坛
+  if (window.MirrorPuzzle && !MirrorPuzzle.allSolved()) {
+    location.href = MirrorPuzzle.siteRoot() + 'forum/index.html';
+  }
   // 渲染坐标格
   (function () {
     var g = document.getElementById('mapgrid');
@@ -77,7 +82,6 @@
       g.appendChild(d);
     }
   })();
-  try { Progress.setProgress(13); } catch (e) {}
   try { Drone.start({ freq: 44, level: 0.05 }); } catch (e) {}
 </script>
 </body>

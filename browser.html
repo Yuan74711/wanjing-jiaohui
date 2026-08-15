@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>浏览器 · 老槐树饺子馆</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/warm.css">
+<style>
+  body{background:#0d0b0a;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:1.4rem;font-family:inherit}
+  .browser{width:min(860px,100%);background:#1b1714;border:1px solid #3a2c24;border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .bar{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;background:#141110;border-bottom:1px solid #2c211b}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .dot.r{background:#e15b4c}.dot.y{background:#e0a93b}.dot.g{background:#5bbf6a}
+  .addr{flex:1;display:flex;align-items:center;gap:.5rem;background:#0d0b0a;border:1px solid #2c211b;border-radius:20px;padding:.4rem .9rem;color:#9c8c79;font-size:.82rem}
+  .addr .lock{opacity:.6}
+  .star{color:#c0392b;font-size:1rem}
+  .tabs{display:flex;gap:.2rem;padding:.4rem .6rem 0;background:#141110}
+  .tab{background:#1b1714;border:1px solid #2c211b;border-bottom:0;padding:.45rem .9rem;border-radius:6px 6px 0 0;color:#cdbfae;font-size:.82rem}
+  .tab.active{background:#241d18;color:#fff}
+  .body{display:flex;min-height:380px}
+  .side{width:200px;background:#141110;border-right:1px solid #2c211b;padding:1rem .8rem;font-size:.8rem}
+  .side h3{font-size:.72rem;letter-spacing:.18rem;color:#6b5c4b;margin:0 0 .8rem}
+  .bm{display:block;padding:.5rem .6rem;border-radius:5px;color:#cdbfae;text-decoration:none;margin-bottom:.4rem}
+  .bm:hover{background:#241d18}
+  .bm .t{color:#e8d9c6}
+  .bm .s{display:block;font-size:.7rem;color:#6b5c4b;margin-top:.2rem}
+  .main{flex:1;padding:1.6rem;color:#d8cab8}
+  .main h2{font-weight:400;color:#e8d9c6;margin-top:0}
+  .main p{line-height:1.9;color:#b8a994}
+  .main .dim{color:#8c7d6b}
+  .open{display:inline-block;margin-top:1.4rem;padding:.75rem 1.8rem;background:#1d1610;border:1px solid #4a342a;color:#e8d9c6;text-decoration:none;letter-spacing:.1rem;transition:.3s}
+  .open:hover{background:#2a1d14;border-color:#c0392b;color:#fff;box-shadow:0 0 18px rgba(192,57,43,.35)}
+  .hintline{margin-top:1.2rem;font-size:.74rem;color:#6b5c4b}
+</style>
+</head>
+<body>
+<div class="browser">
+  <div class="bar">
+    <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+    <div class="addr"><span class="lock">🔒</span> old-huai-shu.diner/mirror/ &nbsp;·&nbsp; 连接不安全</div>
+    <span class="star" title="已收藏">★</span>
+  </div>
+  <div class="tabs">
+    <span class="tab active">老槐树饺子馆</span>
+    <span class="tab">新标签页</span>
+  </div>
+  <div class="body">
+    <aside class="side">
+      <h3>书签栏</h3>
+      <a class="bm" href="intro.html"><span class="t">老槐树饺子馆</span><span class="s">三个月前收藏</span></a>
+      <a class="bm" href="intro.html"><span class="t">未读 · 老槐树饺子馆</span><span class="s">收藏夹最底层</span></a>
+      <h3 style="margin-top:1.4rem">历史</h3>
+      <span class="bm"><span class="t" style="color:#6b5c4b">23:41 审核后台（已注销）</span></span>
+      <span class="bm"><span class="t" style="color:#6b5c4b">23:39 待复核工单 #1999</span></span>
+    </aside>
+    <main class="main">
+      <h2>你的浏览器</h2>
+      <p>这是你的屏幕。三个月前，你还是内容审核员的时候，把一家叫「老槐树饺子馆」的小店官网，悄悄收进了书签——你从没向任何人提起过它。</p>
+      <p class="dim">它挂着一句怎么都删不掉的话：「你看见的每一面镜子，都是门。」你当年把它提交复核，系统却一次次把它弹回来。</p>
+      <p class="dim">今晚，你又失眠了。那个书签还在。也许，是时候亲手点开它了。</p>
+      <a class="open" href="intro.html" id="openBtn">打开书签 · 老槐树饺子馆 ▸</a>
+      <p class="hintline">（提示：Ctrl/Cmd + F12 之类的行为，镜主不喜欢。别偷看源代码。）</p>
+    </main>
+  </div>
+</div>
+
+<script src="js/f12.js"></script>
+<script>
+  document.getElementById('openBtn').addEventListener('click', function () {
+    try { Drone && Drone.start && Drone.start({ freq: 50, level: 0.03 }); } catch (e) {}
+  });
+</script>
+</body>
+</html>

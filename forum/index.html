@@ -25,7 +25,7 @@
 
     <div class="card">
       <h2>镜面节点索引</h2>
-      <ul class="thread-list">
+      <ul class="thread-list" id="threadList">
         <li><a class="link" href="post_mirror_01.html">① 乾位的邀请</a></li>
         <li><a class="link" href="post_mirror_02.html">② 早已给你编号的人</a></li>
         <li><a class="link" href="post_mirror_03.html">③ 把字母反过来</a></li>
@@ -40,6 +40,18 @@
         <li><a class="link" href="post_mirror_12.html">⑫ 只差一步</a></li>
         <li><a class="link" href="post_mirror_13.html">⑬ 第 13 面镜子</a></li>
       </ul>
+    </div>
+
+    <div class="card" id="gateCard">
+      <h2>镜子照见了几面</h2>
+      <p id="gateStat" class="whisper"></p>
+      <div id="gateOpen" style="display:none">
+        <p class="creed">十三面镜子都亮了。下面的门，开了。</p>
+        <p><a class="link" href="../realworld/coordinates.html">进入下一章：现实坐标 ▸</a></p>
+      </div>
+      <div id="gateLock">
+        <p class="whisper">每面镜子都要你亲手把谜底交还，才会亮。十三面都照见，下面的门才会开。</p>
+      </div>
     </div>
 
     <div class="card">
@@ -65,9 +77,22 @@
 <script src="../js/f12.js"></script>
 <script src="../js/search.js"></script>
 <script src="../js/audio.js"></script>
+<script src="../js/puzzle.js"></script>
 <script>
   Progress.setChapter(2);
   try { Drone.start({ freq: 52, level: 0.03 }); } catch (e) {}
+  (function () {
+    var stat = document.getElementById('gateStat');
+    var open = document.getElementById('gateOpen');
+    var lock = document.getElementById('gateLock');
+    function refresh() {
+      var c = MirrorPuzzle.countSolved();
+      stat.textContent = '已照见 ' + c + ' / 13 面。';
+      if (MirrorPuzzle.allSolved()) { open.style.display = 'block'; lock.style.display = 'none'; }
+      else { open.style.display = 'none'; lock.style.display = 'block'; }
+    }
+    refresh();
+  })();
 </script>
 </body>
 </html>

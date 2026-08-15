@@ -65,8 +65,13 @@
 <script src="../js/progress.js"></script>
 <script src="../js/f12.js"></script>
 <script src="../js/audio.js"></script>
+<script src="../js/puzzle.js"></script>
 <script>
   (function () {
+    // 门控：十三面镜子未照齐，回到论坛
+    if (window.MirrorPuzzle && !MirrorPuzzle.allSolved()) {
+      location.href = MirrorPuzzle.siteRoot() + 'forum/index.html';
+    }
     var id = '————';
     try { id = Progress.getId(); Progress.setChapter(4); } catch (e) {}
 

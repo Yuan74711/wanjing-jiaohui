@@ -59,8 +59,13 @@
 <script src="../js/f12.js"></script>
 <script src="../js/audio.js"></script>
 <script src="../js/search.js"></script>
+<script src="../js/puzzle.js"></script>
 <script>
   (function () {
+    // 门控：十三面镜子未照齐，回到论坛
+    if (window.MirrorPuzzle && !MirrorPuzzle.allSolved()) {
+      location.href = MirrorPuzzle.siteRoot() + 'forum/index.html';
+    }
     var board = document.getElementById('board');
     var items = [
       '老槐树饺子馆页脚的「镜」字',
@@ -85,7 +90,6 @@
       location.href = '../backend/auditor.html';
     });
   })();
-  try { Progress.setProgress(13); } catch (e) {}
 </script>
 </body>
 </html>

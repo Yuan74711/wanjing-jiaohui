@@ -60,3 +60,14 @@ footer.site{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border
   .wrap{padding:0 .85rem}
   .card{padding:1.1rem 1.1rem}
 }
+
+/* ===== 镜面谜题输入框 ===== */
+.puzzle{margin:1.4rem 0;padding:1.1rem 1.2rem;border:1px solid var(--border);border-radius:6px;background:rgba(0,0,0,.12)}
+.puzzle label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:.7rem;letter-spacing:.06rem}
+.puzzle-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.puzzle-row input{flex:1;min-width:180px;padding:.75rem .9rem;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--fg);font-size:1rem}
+.puzzle-row input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 10px rgba(142,68,173,.35)}
+.puzzle-row button{padding:.75rem 1.3rem;border:0;background:var(--accent);color:#fff;border-radius:4px;cursor:pointer;font-size:.95rem;letter-spacing:.1rem;white-space:nowrap}
+.puzzle-row button:hover{filter:brightness(1.1)}
+.pz-msg{margin-top:.6rem;font-size:.82rem;color:var(--accent);min-height:1.1rem}
+.puzzle-done{margin:1.4rem 0;padding:.9rem 1.1rem;border:1px solid var(--accent);border-radius:6px;color:var(--fg);background:rgba(142,68,173,.1);letter-spacing:.05rem}
