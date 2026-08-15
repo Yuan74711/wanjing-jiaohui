@@ -38,6 +38,16 @@
     </div>
   </main>
 
+    <div class="card">
+      <h2>问问镜子</h2>
+      <p class="whisper">卡住了？把你在别处看到的字、数字、年份，交给搜索框。它会替你开门。</p>
+      <form id="searchForm" method="get" class="search-box">
+        <input id="searchInput" type="text" placeholder="问镜子一个问题…" autocomplete="off">
+        <button type="submit">照镜子</button>
+      </form>
+      <div id="searchMsg"></div>
+    </div>
+
   <footer class="site">
     <div id="progress"></div>
     <p>© 万镜教会 · 灯不会灭，只是你以为灭了</p>
@@ -47,6 +57,7 @@
 <script src="../js/progress.js"></script>
 <script src="../js/f12.js"></script>
 <script src="../js/audio.js"></script>
+<script src="../js/search.js"></script>
 <script>
   // 灯倒数 13→1，数到 1 时停（第13面镜子亮起）
   (function () {

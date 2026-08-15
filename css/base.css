@@ -36,9 +36,10 @@ a.link{color:var(--accent)}
 .mirror-node{opacity:.22;transition:opacity .5s,color .5s,text-shadow .5s}
 .mirror-node.lit{opacity:1;color:var(--accent);text-shadow:0 0 10px var(--accent)}
 
-/* 异常字「镜」：像素偏移 + 几乎不可见 */
-.anomaly{position:relative;opacity:.025;cursor:pointer;font-size:.78rem;user-select:none;transition:opacity .5s}
-.anomaly:hover{opacity:.92;text-shadow:2px 0 var(--accent),-2px 0 #1aa6a0}
+/* 异常字「镜」：像素偏移 + 极淡可见 + 缓慢呼吸，提示玩家这里"有东西" */
+.anomaly{position:relative;opacity:.06;cursor:pointer;font-size:.78rem;user-select:none;transition:opacity .5s;text-shadow:0 0 6px rgba(192,57,43,.35);animation:eggpulse 3.6s ease-in-out infinite}
+.anomaly:hover{opacity:.95;text-shadow:2px 0 var(--accent),-2px 0 #1aa6a0}
+@keyframes eggpulse{0%,100%{opacity:.05}50%{opacity:.18}}
 .glitch{text-shadow:1.6px 0 #c0392b,-1.6px 0 #16a085;letter-spacing:.06rem}
 
 /* 统一搜索框 */
