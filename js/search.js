@@ -30,13 +30,19 @@
     '老槐树':   'index.html'
   };
 
-  // 从当前页回到站点根所需的上层级数前缀
-  function rootPrefix() {
+  // 站点根目录（绝对 URL，兼容 GitHub Pages 子路径 / 本地 file:// 两种部署）
+  // 通过当前脚本自身路径反推：.../wanjing-jiaohui/js/search.js → .../wanjing-jiaohui/
+  function siteBase() {
+    const here = (document.currentScript && document.currentScript.src) || location.href;
+    const m = here.match(/^(.*?)\/(?:js|css)\//);
+    if (m) return m[1] + '/';
     const segs = location.pathname.split('/').filter(Boolean);
-    return '../'.repeat(Math.max(0, segs.length - 1));
+    segs.pop();
+    return location.origin + '/' + segs.join('/') + '/';
   }
+  function rootPrefix() { return siteBase(); } // 兼容旧引用
   function relSearch() {
-    return rootPrefix() + 'search.html';
+    return siteBase() + 'search.html';
   }
   function route(q) {
     const key = (q || '').trim().toLowerCase();
@@ -45,7 +51,7 @@
     for (const k in ROUTES) { if (key.indexOf(k) >= 0) return ROUTES[k]; }
     return null;
   }
-  window.MirrorSearch = { relSearch: relSearch, route: route, rootPrefix: rootPrefix, ROUTES: ROUTES };
+  window.MirrorSearch = { relSearch: relSearch, route: route, rootPrefix: rootPrefix, siteBase: siteBase, ROUTES: ROUTES };
 
   document.addEventListener('DOMContentLoaded', function () {
     const params = new URLSearchParams(location.search);
@@ -61,12 +67,12 @@
         const v = input.value;
         localStorage.setItem('lastQuery', v);
         const dest = route(v);
-        // 目标路径相对于站点根，必须补齐当前目录的上层前缀
-        if (dest) location.href = rootPrefix() + dest;
+        // 目标路径相对站点根，用绝对站点根拼接（兼容子路径部署）
+        if (dest) location.href = siteBase() + dest;
         else if (msg) msg.textContent = '“' + v + '” 在镜中没有任何倒影。再想想？';
       });
     }
-    // 若被带 ?q= 直达，则直接路由（同样需补齐根前缀）
-    if (q) { const dest = route(q); if (dest) location.href = rootPrefix() + dest; }
+    // 若被带 ?q= 直达，则直接路由（同样用站点根拼接）
+    if (q) { const dest = route(q); if (dest) location.href = siteBase() + dest; }
   });
 })();
