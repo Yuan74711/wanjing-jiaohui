@@ -32,6 +32,18 @@
   .open{display:inline-block;margin-top:1.4rem;padding:.75rem 1.8rem;background:#1d1610;border:1px solid #4a342a;color:#e8d9c6;text-decoration:none;letter-spacing:.1rem;transition:.3s}
   .open:hover{background:#2a1d14;border-color:#c0392b;color:#fff;box-shadow:0 0 18px rgba(192,57,43,.35)}
   .hintline{margin-top:1.2rem;font-size:.74rem;color:#6b5c4b}
+  /* 移动端：双栏改为上下堆叠，地址栏/按钮自适应 */
+  @media(max-width:600px){
+    body{padding:.6rem;align-items:stretch}
+    .browser{width:100%}
+    .bar{flex-wrap:wrap}
+    .addr{font-size:.7rem;padding:.4rem .6rem;min-width:0}
+    .body{flex-direction:column;min-height:auto}
+    .side{width:100%;border-right:0;border-bottom:1px solid #2c211b;padding:.9rem .8rem}
+    .main{padding:1.1rem}
+    .open{width:100%;text-align:center;box-sizing:border-box;font-size:.95rem}
+    .tab{font-size:.74rem;padding:.4rem .7rem}
+  }
 </style>
 </head>
 <body>
