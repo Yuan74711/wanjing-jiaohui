@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>未读 · 老槐树饺子馆</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/warm.css">
+<style>
+  /* 序章专属：深夜屏幕的微光，比正文更暗、更冷一点 */
+  body{background:#15110d;color:#cdbfae}
+  .wrap{max-width:680px}
+  .pre{font-size:.78rem;letter-spacing:.18rem;color:#7a6a58;margin-bottom:1.4rem}
+  .prologue p{line-height:2;margin:0 0 1.1rem;color:#d8cab8}
+  .prologue .dim{color:#8c7d6b}
+  .prologue .link{color:#c0392b;border-bottom:1px dotted #5a3b34}
+  .enter{
+    display:inline-block;margin-top:1.6rem;padding:.7rem 1.6rem;
+    background:#1d1610;border:1px solid #4a342a;color:#e8d9c6;
+    text-decoration:none;letter-spacing:.1rem;transition:.3s}
+  .enter:hover{background:#2a1d14;border-color:#c0392b;color:#fff;
+    box-shadow:0 0 18px rgba(192,57,43,.35)}
+  .skip{display:block;margin-top:1rem;font-size:.76rem;color:#6b5c4b}
+  .skip a{color:#6b5c4b}
+  .timestamp{margin-top:2.4rem;font-size:.72rem;color:#5a4d3e;letter-spacing:.1rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1 style="font-size:1.5rem">未读消息 · 1</h1>
+    <div class="pre">浏览器 · 23:47 · 已退出登录</div>
+  </header>
+
+  <main>
+    <div class="card prologue">
+      <p>你被优化，已经第七周了。</p>
+      <p>离职那天，工牌被收走，邮箱停了，连那台贴满便利贴的显示器都没让你带走。你做过三年内容审核——专门盯那些<span class="dim">不该存在</span>的网页。举报、拦截、归档，像在深夜的河里，把浮上来的东西一只只按回去。</p>
+      <p>有那么一个站，你始终没查清。不是色情，不是暴力，说不清哪里不对——只有一句怎么都删不干净的话：<span class="link">「你看见的每一面镜子，都是门。」</span> 它挂在一家叫<span class="link">老槐树饺子馆</span>的小店官网底下，像招牌上多出的一个笔画。</p>
+      <p class="dim">那之后你就被优化了。也许无关，也许……你后来总在睡前想起它。</p>
+      <p>今晚又睡不着。你翻到收藏夹最底层，那个忘了删的旧链接，在暗处亮了一下。</p>
+      <p class="dim">你想知道，那扇门后面，到底有什么。</p>
+
+      <a class="enter" href="index.html" id="enterBtn">推开老槐树饺子馆的门 ▸</a>
+      <span class="skip">（<a href="index.html" id="skipBtn">跳过，直接进店</a>）</span>
+    </div>
+
+    <div class="timestamp">记录于 1999 年节目停播后的某个夜晚 · 你不是第一个点开它的人</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 老槐树饺子馆</p>
+    <span class="anomaly glitch">镜</span>
+  </footer>
+</div>
+
+<script src="js/progress.js"></script>
+<script src="js/f12.js"></script>
+<script src="js/audio.js"></script>
+<script>
+  function go() {
+    try { localStorage.setItem('seenIntro', '1'); } catch (e) {}
+    try { Drone.start({ freq: 44, level: 0.03 }); } catch (e) {}
+    location.href = 'index.html';
+  }
+  document.getElementById('enterBtn').addEventListener('click', function (e) { e.preventDefault(); go(); });
+  document.getElementById('skipBtn').addEventListener('click', function (e) { e.preventDefault(); go(); });
+</script>
+</body>
+</html>

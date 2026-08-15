@@ -13,6 +13,7 @@
     <h1>老槐树饺子馆</h1>
     <div class="tagline">手工现包 · 家常味道 · 营业三十一年</div>
     <nav>
+      <a href="intro.html">背景</a>
       <a href="menu.html">菜单</a>
       <a href="about.html">关于</a>
       <a href="search.html">站内搜索</a>
@@ -56,6 +57,10 @@
 <script src="js/f12.js"></script>
 <script src="js/audio.js"></script>
 <script>
+  // 首次访问先进入背景序章（intro.html），看过即标记，不再拦截
+  try {
+    if (!localStorage.getItem('seenIntro')) { location.href = 'intro.html'; }
+  } catch (e) {}
   document.getElementById('mirrorEgg').addEventListener('click', function () {
     try { Drone.start({ freq: 48, level: 0.04 }); } catch (e) {}
     location.href = '404.html';
