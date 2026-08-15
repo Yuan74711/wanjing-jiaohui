@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MIRROR_EXIT · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap break4">
+  <header class="site">
+    <h1>MIRROR_EXIT 已执行</h1>
+    <div class="tagline">隐藏指令 · 打破第四面墙</div>
+  </header>
+
+  <main>
+    <div class="card">
+      <p>你输入了那串隐藏指令。</p>
+      <p>屏幕暗了一瞬。再亮起时，镜子里站着的，不是 NPC，是<b>你</b>。</p>
+      <p class="whisper">接下来这段话，不是写给你扮演的角色的。是写给正在读它的<b>你</b>。</p>
+    </div>
+
+    <div class="card">
+      <h2>1999 年，有一档节目</h2>
+      <p>《万镜夜话》，一档只在深夜播出的互动节目。它不靠收视率活着——
+      它靠「观众」。</p>
+      <p>每开播一季，节目会邀请 <b>13</b> 名观众参与一场「镜面仪式」。
+      前 12 名平安回家，第 <b>13</b> 名，会「留在镜子里」。</p>
+      <p class="whisper">1999 年首播的那一季，有 <b>13</b> 名观众，再没回来。</p>
+      <p class="hint">官方记录写的是「信号故障，直播中断」。但镜子知道真相。</p>
+    </div>
+
+    <div class="card">
+      <h2>你刚完成的，是 2026 季</h2>
+      <p>老槐树饺子馆、镜面论坛的 13 个帖子、那座塔、被监视的搜索框——
+      都不是 bug，是节目流程。</p>
+      <p>你的工号 <b id="pid">————</b>，就是这一季第 13 位「观众」的编号。</p>
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+      <p class="hint">门这边是屏幕，门那边——是 1999 年那 13 个人一直等着的空位。</p>
+    </div>
+
+    <div class="card">
+      <h2>想看清整件事</h2>
+      <ul>
+        <li><a class="link" href="../hidden/1999.html">1999 年失踪观众档案</a></li>
+        <li><a class="link" href="../hidden/transcript.html">《万镜夜话》首播转录</a></li>
+        <li><a class="link" href="../hidden/redroom.html">红房间 · 历届祭品留言</a></li>
+        <li><a class="link" href="../hidden/mirror.html">最后一面镜子</a></li>
+      </ul>
+    </div>
+
+    <div class="card danger center">
+      <p class="tiny">你以为你在玩游戏。其实，是节目在等它的第 13 个人上线。</p>
+      <p class="tiny">——欢迎收看《万镜夜话》。下一季，也许就是你身边的人。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 1999 – 2026 · 直播从未中断</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  try { document.getElementById('pid').textContent = Progress.getId(); } catch (e) {}
+  try { Progress.setProgress(13); Progress.setChapter(5); } catch (e) {}
+  try { Drone.start({ freq: 22, level: 0.24 }); } catch (e) {}
+  try { Drone.crack(); } catch (e) {}
+</script>
+</body>
+</html>

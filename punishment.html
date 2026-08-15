@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>……</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/dark.css">
+<style>
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;overflow:hidden}
+  .punish{text-align:center;max-width:560px;padding:2rem}
+  .punish h1{font-size:2.2rem;letter-spacing:.3rem;color:#c77dff;text-shadow:0 0 18px #8e44ad;animation:flick 2.2s infinite}
+  .punish p{margin:1.2rem 0;color:#9b87b5}
+  .punish .small{font-size:.8rem;opacity:.5}
+  @keyframes flick{0%,100%{opacity:1}45%{opacity:.4}50%{opacity:.9}55%{opacity:.3}}
+  .goback{margin-top:2rem;color:#c77dff;text-decoration:none;border:1px solid #8e44ad;padding:.6rem 1.4rem;border-radius:4px;display:inline-block}
+</style>
+</head>
+<body>
+<div class="punish">
+  <h1 class="glitch">镜主不喜欢被偷看</h1>
+  <p>你按下了不该按的键。</p>
+  <p>开发者工具？那是给「外面的人」用的。</p>
+  <p class="small">你刚才的动作，已经被记在第十三面镜子上了。</p>
+  <a class="goback" href="index.html">退回门内</a>
+</div>
+
+<script src="js/progress.js"></script>
+<script>
+  // 惩罚页：再次按 F12 也无路可逃，只会循环
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'F12') { e.preventDefault(); }
+  });
+  document.querySelector('.goback').addEventListener('click', function () {
+    try { Drone && Drone.start && Drone.start({ freq: 60, level: 0.06 }); } catch (err) {}
+  });
+</script>
+</body>
+</html>

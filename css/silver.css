@@ -1,0 +1,16 @@
+/* ===== 第二章配色：银灰（镜面论坛） ===== */
+:root{
+  --bg:#2c3e50;
+  --fg:#e8edf0;
+  --accent:#bdc3c7;
+  --muted:#7f8c9a;
+  --card:rgba(255,255,255,.05);
+  --border:rgba(255,255,255,.14);
+}
+body{background:linear-gradient(160deg,#34495e,#1f2d3a)}
+.card{background:var(--card)}
+.search-box input{background:rgba(0,0,0,.3);border-color:rgba(255,255,255,.2);color:var(--fg)}
+.search-box button{background:var(--accent);color:#1a1a1a}
+.mirror-node.lit{color:#ecf0f1;text-shadow:0 0 12px #bdc3c7}
+footer.site,header.site{border-color:rgba(255,255,255,.14)}
+nav a{color:#dfe6ea}

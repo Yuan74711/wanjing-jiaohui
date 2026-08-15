@@ -1,0 +1,18 @@
+/* ===== 第三、四章配色：黑紫（仪式 / 后台） ===== */
+:root{
+  --bg:#1a0a2e;
+  --fg:#e6d9f2;
+  --accent:#8e44ad;
+  --muted:#6b5a80;
+  --card:rgba(142,68,173,.08);
+  --border:rgba(142,68,173,.28);
+}
+body{background:radial-gradient(circle at 50% -10%,#2a1145,#0c0418 70%)}
+.card{background:var(--card)}
+.search-box input{background:rgba(0,0,0,.4);border-color:rgba(142,68,173,.4);color:var(--fg)}
+.search-box button{background:var(--accent);color:#fff}
+.mirror-node.lit{color:#c77dff;text-shadow:0 0 14px #8e44ad}
+footer.site,header.site{border-color:rgba(142,68,173,.3)}
+nav a{color:#d9b8f0}
+a.link{color:#c77dff}
+.whisper{color:#9b87b5}

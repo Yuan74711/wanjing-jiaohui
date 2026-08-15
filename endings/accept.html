@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>欢迎回家 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap recruit">
+  <header class="site">
+    <h1>万镜教会 · 招募入口</h1>
+    <div class="tagline">你的选择：接受</div>
+  </header>
+
+  <main>
+    <div class="card shine">
+      <p class="creed">欢迎回家，<b id="pid">————</b>。</p>
+      <p>你接受了。镜主把一面镜子，交到了你手里。</p>
+      <p class="whisper">从今天起，你是<b>第 14 面镜子</b>。前 13 面已经满员，而你，是第一位「代理人」。</p>
+    </div>
+
+    <div class="card">
+      <h2>你的新职责</h2>
+      <ul>
+        <li>守护镜面论坛的 13 个节点</li>
+        <li>在搜索框里，替万镜教会物色下一个「调查者」</li>
+        <li>等他点开老槐树页脚那个「镜」字</li>
+      </ul>
+      <p class="hint">仪式不会停。每一季，都会有新的第 13 个人。</p>
+    </div>
+
+    <div class="card center">
+      <h2>开始你的第一次镜面仪式</h2>
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+      <a class="link big" href="../index.html">放出下一面镜子 ▸</a>
+      <p class="hint">点下去，老槐树饺子馆会重新开张。这一次，站在镜子后面的人，是你。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 代理人 <span id="pid2">————</span></p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  (function () {
+    var id = '————';
+    try { id = Progress.getId(); } catch (e) {}
+    document.getElementById('pid').textContent = id;
+    document.getElementById('pid2').textContent = id;
+    try { Progress.setProgress(13); Progress.setChapter(5); } catch (e) {}
+    try { Drone.start({ freq: 24, level: 0.2 }); } catch (e) {}
+  })();
+</script>
+</body>
+</html>

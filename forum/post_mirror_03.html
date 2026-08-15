@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>镜面节点 ③ · 把字母反过来</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/silver.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>万镜教会 · 镜面论坛</h1>
+    <div class="tagline">你看见的每一面镜子，都是门</div>
+    <nav><a href="index.html">论坛</a><a href="../search.html">搜索</a><a href="../index.html">老槐树</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="node-tag">镜面节点 3 / 13</div>
+      <h2>把字母反过来</h2>
+      <p>镜子里的世界，是把现实反过来的。</p>
+      <p>看看你现在所在的网址——它写着 <code>post_mirror_03.html</code>。</p>
+      <p class="whisper">把地址里的「03」反过来，变成「30」，再敲回车。有一面镜子，藏在编号的反面。</p>
+      <p>（找不到也没关系，仪式不会因为一面镜子停下。）</p>
+      <p class="whisper">镜子会自己领你走。回到论坛，剩下的都在那儿。</p>
+    </div>
+
+    <div class="card">
+      <form id="searchForm" method="get" class="search-box">
+        <input id="searchInput" type="text" placeholder="问镜子一个问题…" autocomplete="off">
+        <button type="submit">照镜子</button>
+      </form>
+      <div id="searchMsg"></div>
+    </div>
+
+    <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜面论坛</p>
+    <span class="anomaly glitch">镜</span>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  Progress.setChapter(2);
+  Progress.setProgress(3);
+  try { Drone.start({ freq: 50, level: 0.045 }); } catch (e) {}
+</script>
+</body>
+</html>

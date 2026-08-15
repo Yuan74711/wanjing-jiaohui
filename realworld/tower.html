@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>塔顶 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>镜面论坛 · 塔顶</h1>
+    <div class="tagline">红灯每闪一次，就有一面镜子被点亮。</div>
+    <nav>
+      <a href="../search.html">站内搜索</a>
+      <a href="../forum/index.html">返回论坛</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>塔顶的灯</h2>
+      <div class="tower-light" id="light"></div>
+      <p class="whisper" id="countdown">灯正在数数。数到 13 就停。</p>
+    </div>
+
+    <div class="card">
+      <h2>摩斯</h2>
+      <p class="morse" id="morse">-- .. .-. .-. --- .-.</p>
+      <p class="hint">灯闪烁的节奏，拼出六个字母 MIRROR。那是镜主的名字。</p>
+    </div>
+
+    <div class="card">
+      <h2>数完了</h2>
+      <p class="whisper">灯数到 0，你已经被看见了。该把证据收齐了——问问镜子，去哪收。</p>
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 灯不会灭，只是你以为灭了</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  // 灯倒数 13→1，数到 1 时停（第13面镜子亮起）
+  (function () {
+    var light = document.getElementById('light');
+    var cd = document.getElementById('countdown');
+    var n = 13;
+    var t = setInterval(function () {
+      light.classList.toggle('on');
+      cd.textContent = '灯正在数数：' + n;
+      n--;
+      if (n < 0) {
+        clearInterval(t);
+        light.classList.add('on');
+        cd.textContent = '数到 0。第十三面镜子，已经为你亮着。';
+        try { Drone.start({ freq: 38, level: 0.08 }); } catch (e) {}
+      }
+    }, 700);
+  })();
+  try { Progress.setProgress(13); } catch (e) {}
+</script>
+</body>
+</html>

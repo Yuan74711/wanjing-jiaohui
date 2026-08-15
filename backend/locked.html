@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你以为你能关掉镜子吗 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap locked">
+  <main>
+    <div class="card danger center">
+      <h2>你以为你能关掉镜子吗？</h2>
+      <p class="whisper">第 13 次镜面仪式尚未完成。镜主不允许你离开。</p>
+      <p>你点的每一次「关闭」「刷新」「后退」，都只是又一次照镜子。</p>
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+      <button id="back">回去完成仪式 ▸</button>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 你出不去的</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  document.getElementById('back').addEventListener('click', function () {
+    location.href = 'auditor.html';
+  });
+  // 锁死后退
+  history.pushState(null, '', location.href);
+  window.addEventListener('popstate', function () {
+    history.pushState(null, '', location.href);
+  });
+  window.addEventListener('beforeunload', function (e) {
+    e.preventDefault();
+    e.returnValue = '镜主不允许你离开。';
+    return e.returnValue;
+  });
+  try { Progress.setProgress(13); } catch (e) {}
+  try { Drone.start({ freq: 28, level: 0.2 }); } catch (e) {}
+</script>
+</body>
+</html>

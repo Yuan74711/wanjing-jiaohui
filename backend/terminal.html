@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>系统日志 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>系统日志 · MIRROR_OS</h1>
+    <div class="tagline">万镜教会 · 后台守护进程</div>
+    <nav><a href="auditor.html">返回后台</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <pre id="log" class="log"></pre>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 日志不会停</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  (function () {
+    var id = '————';
+    try { id = Progress.getId(); } catch (e) {}
+    var lines = [
+      '[MIRROR_OS] 守护进程已启动',
+      '[AUTH] 检测到审核员会话：' + id,
+      '[AUTH] 自动登录成功（无需密码）',
+      '[NODE] 镜面节点 01/13 ... 已登记',
+      '[NODE] 镜面节点 02/13 ... 已登记',
+      '...',
+      '[NODE] 镜面节点 12/13 ... 已登记',
+      '[NODE] 镜面节点 13/13 ... 已登记 ▣ 对象=' + id,
+      '[RITUAL] 第 13 次镜面仪式：完成度 100%',
+      '[RITUAL] 正在向镜主同步祭品档案……',
+      '[LINK] 镜主连接已建立。',
+      '[LINK] 镜主正在凝视 ' + id + '。',
+      '[WARN] 请勿关闭本窗口。门已经打开。'
+    ];
+    var box = document.getElementById('log');
+    var i = 0;
+    var timer = setInterval(function () {
+      if (i >= lines.length) { clearInterval(timer); return; }
+      box.textContent += lines[i] + '\n';
+      i++;
+      if (i === lines.length) {
+        try { Drone.start({ freq: 27, level: 0.22 }); } catch (e) {}
+        try { Drone.crack(); } catch (e) {}
+      }
+    }, 520);
+
+    try { Progress.setProgress(13); } catch (e) {}
+  })();
+</script>
+</body>
+</html>

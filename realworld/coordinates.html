@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>坐标 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>镜面论坛 · 现实坐标</h1>
+    <div class="tagline">你以为你在屏幕这头。你一直在镜子那头。</div>
+    <nav>
+      <a href="../search.html">站内搜索</a>
+      <a href="../forum/index.html">返回论坛</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>第 11 号镜面留下的坐标</h2>
+      <p class="coords">31.2318° N　121.4734° E</p>
+      <p>这是一座塔。你城市里那座最高的塔，也是同一面镜子。</p>
+      <p class="whisper">你刚才在搜索框里输入的城市名，已经改变了这座塔的位置。</p>
+    </div>
+
+    <div class="card">
+      <h2>读图</h2>
+      <div class="mapgrid" id="mapgrid"></div>
+      <p class="hint">把纬度的小数部分，反过来读。那是塔顶红灯闪烁的次数。</p>
+    </div>
+
+    <div class="card">
+      <h2>门外</h2>
+      <p class="whisper">塔顶的灯，和街上的招牌，映着同一件事。该去外面看看了——把你想到的词，交给搜索框。</p>
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+    </div>
+
+    <div class="card">
+      <p class="whisper">有些词，只有镜子听得懂。试试把你刚看到的，交给它。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜主正在记录你的位置</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  // 渲染坐标格
+  (function () {
+    var g = document.getElementById('mapgrid');
+    var n = 13;
+    for (var i = 0; i < n * n; i++) {
+      var d = document.createElement('span');
+      d.className = 'cell';
+      // 在第 (2,11) 位置点亮一座"塔"
+      var r = Math.floor(i / n), c = i % n;
+      if (r === 2 && c === 11) d.className += ' tower';
+      g.appendChild(d);
+    }
+  })();
+  try { Progress.setProgress(13); } catch (e) {}
+  try { Drone.start({ freq: 44, level: 0.05 }); } catch (e) {}
+</script>
+</body>
+</html>

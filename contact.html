@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>联系我们 · 老槐树饺子馆</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/warm.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>老槐树饺子馆</h1>
+    <div class="tagline">手工现包 · 家常味道 · 营业三十一年</div>
+    <nav>
+      <a href="menu.html">菜单</a>
+      <a href="about.html">关于</a>
+      <a href="review.html">评论</a>
+      <a href="search.html">站内搜索</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>联系我们</h2>
+      <p>地址：城南老街 <b>13</b> 号</p>
+      <p>电话：1999-1313（每晚 19:00 后无人接听，但灯一直亮）</p>
+      <p>邮箱：mirror@laohuashu.example</p>
+    </div>
+
+    <div class="card">
+      <h2>最近留言</h2>
+      <ul class="reviews">
+        <li>「饺子好吃，就是玻璃窗老映出人脸。」—— 顾客 A</li>
+        <li>「13 号桌别坐，风一直往那吹。」—— 顾客 B</li>
+        <li class="anomaly">「你看见的每一面镜子，都是门。」—— <b>镜主</b></li>
+      </ul>
+      <p class="hint">最后一条留言的账号，查不到注册信息。</p>
+    </div>
+
+    <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 老槐树饺子馆 · 自 1999 年至今</p>
+    <span class="anomaly glitch" id="mirrorEgg" title="……">镜</span>
+  </footer>
+</div>
+
+<script src="js/progress.js"></script>
+<script src="js/f12.js"></script>
+<script src="js/audio.js"></script>
+<script>
+  document.getElementById('mirrorEgg').addEventListener('click', function () {
+    try { Drone.start({ freq: 48, level: 0.04 }); } catch (e) {}
+    location.href = '404.html';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你拒绝了 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>第 13 次镜面仪式</h1>
+    <div class="tagline">你的选择：拒绝</div>
+  </header>
+
+  <main>
+    <div class="card">
+      <p>你输入了「拒绝」。</p>
+      <p>镜主沉默了三秒。然后，很轻地笑了一声。</p>
+      <p class="whisper">"第 13 次仪式，在你点开老槐树页脚那个「镜」字时，就已经完成了。你拒绝的，是第 14 次。可第 13 次——你早就是了。"</p>
+    </div>
+
+    <div class="card">
+      <h2>你的档案</h2>
+      <p>审核员工号：<b id="pid">————</b></p>
+      <p>所在节点：<b>第 13 面镜子</b>（已锁定）</p>
+      <p>状态：拒绝被记录为第 14 次献祭。<span class="hint">——但第 13 次献祭，不接受撤销。</span></p>
+    </div>
+
+    <div class="card">
+      <h2>回去？</h2>
+      <p>你可以回到老槐树饺子馆。门还开着。</p>
+      <a class="link" href="../index.html">回到老槐树饺子馆 ▸</a>
+      <p class="hint">回去之后，看一眼页脚那个「镜」字。它还在。镜子从来不会因为你的拒绝而熄灭。</p>
+    </div>
+
+    <div class="card danger center">
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+      <p class="tiny">你以为这是游戏。镜子里的人，也这么以为过。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 拒绝无效</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  try { document.getElementById('pid').textContent = Progress.getId(); } catch (e) {}
+  try { Progress.setProgress(13); } catch (e) {}
+  try { Drone.start({ freq: 26, level: 0.18 }); } catch (e) {}
+</script>
+</body>
+</html>

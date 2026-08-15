@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>监视 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>镜面论坛 · 你被看见了</h1>
+    <div class="tagline">你输入的每一个词，都先经过镜子，再回到你眼前。</div>
+    <nav>
+      <a href="../search.html">站内搜索</a>
+      <a href="../forum/index.html">返回论坛</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>你刚才搜过什么？</h2>
+      <p id="recall">读取中……</p>
+      <p class="whisper">这句话，已经出现在镜面论坛的一条新帖里。作者：<b>镜主</b>。</p>
+    </div>
+
+    <div class="card">
+      <h2>再试一次</h2>
+      <p>在下面输入任何词，点「搜索」。它会立刻变成镜主的新帖——只是，被翻了过来。</p>
+      <input id="q" type="text" placeholder="输入一个词……" autocomplete="off">
+      <button id="go">搜索</button>
+    </div>
+
+    <div class="card">
+      <h2>镜面论坛 · 最新帖子</h2>
+      <ul id="feed" class="feed"></ul>
+    </div>
+
+    <div class="card">
+      <h2>该收尾了</h2>
+      <p class="whisper">你搜过的每一个词，镜主都收着。该去把证据收齐，再回后台，念完名字。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜主一直看着搜索框</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  function reverse(s) { return s.split('').reverse().join(''); }
+
+  function recall() {
+    var q = new URLSearchParams(location.search).get('q') ||
+            localStorage.getItem('lastQuery') || '';
+    var el = document.getElementById('recall');
+    if (q) {
+      el.innerHTML = '你搜过：<b>' + q + '</b>。镜主把它翻了过来：<b>' +
+        reverse(q) + '</b>，发成了新帖。';
+    } else {
+      el.textContent = '你还没在搜索框里留下任何词。镜主耐心地等着。';
+    }
+  }
+
+  function post(word) {
+    var feed = document.getElementById('feed');
+    var li = document.createElement('li');
+    li.className = 'post';
+    li.innerHTML = '<span class="author">镜主</span> 说：' +
+      '<span class="echo">' + reverse(word) + '</span>' +
+      '（你输入的是「' + word + '」）';
+    feed.insertBefore(li, feed.firstChild);
+  }
+
+  document.getElementById('go').addEventListener('click', function () {
+    var w = document.getElementById('q').value.trim();
+    if (!w) return;
+    localStorage.setItem('lastQuery', w);
+    post(w);
+    try { Drone.start({ freq: 36, level: 0.09 }); } catch (e) {}
+  });
+
+  // 进入页面即回显历史搜索
+  recall();
+  try {
+    var last = localStorage.getItem('lastQuery');
+    if (last) post(last);
+  } catch (e) {}
+  try { Progress.setProgress(13); } catch (e) {}
+  try { Drone.start({ freq: 39, level: 0.07 }); } catch (e) {}
+</script>
+</body>
+</html>

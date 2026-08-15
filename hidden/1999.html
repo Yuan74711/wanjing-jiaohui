@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1999 失踪观众档案 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>档案 · 1999 失踪观众</h1>
+    <div class="tagline">万镜教会 · 内部留存（请勿外传）</div>
+    <nav><a href="../endings/mirror_exit.html">返回</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <p>《万镜夜话》1999 年首播季，参与「镜面仪式」的 13 名观众。
+      节目录制至第 13 夜后中断，官方记为「信号故障」。以下为教会内部留存档案。</p>
+      <p class="hint">第 13 名，按仪式惯例，不归还。</p>
+    </div>
+
+    <div class="card">
+      <table class="nodes">
+        <thead><tr><th>编号</th><th>姓名</th><th>节点</th><th>状态</th></tr></thead>
+        <tbody id="list"></tbody>
+      </table>
+    </div>
+
+    <div class="card danger">
+      <h2>2026 季</h2>
+      <p>本季第 13 位「观众」工号：<b id="pid">————</b>。</p>
+      <p class="whisper">仪式仍在直播。你不是第一个，也不会是最后一个。</p>
+      <a class="link" href="../hidden/transcript.html">看 1999 首播转录 ▸</a>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 1999 – 2026</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  var names = ['沈槐','林镜','周野','陈十三','赵南','吴桐','郑川',
+               '孙禾','钱穆','冯夜','褚光','卫岚','镜·佚名'];
+  var list = document.getElementById('list');
+  for (var n = 1; n <= 13; n++) {
+    var tr = document.createElement('tr');
+    var st = n === 13 ? '留在镜中 ▣' : '已归还';
+    if (n === 13) tr.className = 'me';
+    tr.innerHTML = '<td>1999-' + (n < 10 ? '0' + n : n) + '</td><td>' +
+      names[n - 1] + '</td><td>第 ' + n + ' 面镜子</td><td>' + st + '</td>';
+    list.appendChild(tr);
+  }
+  try { document.getElementById('pid').textContent = Progress.getId(); } catch (e) {}
+  try { Progress.setProgress(13); } catch (e) {}
+  try { Drone.start({ freq: 23, level: 0.2 }); } catch (e) {}
+</script>
+</body>
+</html>

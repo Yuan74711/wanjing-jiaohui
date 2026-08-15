@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>镜面节点 ① · 乾位的邀请</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/silver.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>万镜教会 · 镜面论坛</h1>
+    <div class="tagline">你看见的每一面镜子，都是门</div>
+    <nav><a href="index.html">论坛</a><a href="../search.html">搜索</a><a href="../index.html">老槐树</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="node-tag">镜面节点 1 / 13</div>
+      <h2>乾位的邀请</h2>
+      <p>第一面镜子，立在八卦的<b>乾位</b>——西北方。</p>
+      <p>镜主说：「方位不是方向，是邀请。乾为天，天不言，但它把门开在最高的地方。」</p>
+      <p class="whisper">把「乾」想成一个字：它是八卦之首，也是你即将走完的这一圈的开头。</p>
+      <p>下一面镜子，已经替你编号了。</p>
+      <p class="whisper">镜子会自己领你走。回到论坛，剩下的都在那儿。</p>
+    </div>
+
+    <div class="card">
+      <form id="searchForm" method="get" class="search-box">
+        <input id="searchInput" type="text" placeholder="问镜子一个问题…" autocomplete="off">
+        <button type="submit">照镜子</button>
+      </form>
+      <div id="searchMsg"></div>
+    </div>
+
+    <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜面论坛</p>
+    <span class="anomaly glitch">镜</span>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  Progress.setChapter(2);
+  Progress.setProgress(1);
+  try { Drone.start({ freq: 51, level: 0.035 }); } catch (e) {}
+</script>
+</body>
+</html>

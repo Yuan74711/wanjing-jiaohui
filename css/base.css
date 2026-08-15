@@ -1,0 +1,61 @@
+/* ===== 万镜教会 · 基础样式（结构 + 第一章暖色默认值） ===== */
+:root{
+  --bg:#f5e6d3;
+  --fg:#3a2a1a;
+  --accent:#c0392b;
+  --muted:#8a7a6a;
+  --card:rgba(255,255,255,.35);
+  --border:rgba(0,0,0,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
+  background:var(--bg);
+  color:var(--fg);
+  line-height:1.85;
+  padding:0 0 5rem;
+  transition:background 1.4s ease,color 1.4s ease;
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 1.2rem}
+header.site{padding:2.4rem 0 1.1rem;border-bottom:1px solid var(--border)}
+header.site h1{font-size:1.9rem;letter-spacing:.2rem;text-shadow:0 1px 0 rgba(255,255,255,.4)}
+.tagline{color:var(--muted);font-size:.92rem;margin-top:.35rem;letter-spacing:.05rem}
+nav{margin-top:1rem}
+nav a{color:var(--accent);text-decoration:none;margin-right:1.1rem;font-size:.9rem}
+nav a:hover{text-decoration:underline}
+main{padding:2rem 0;min-height:40vh}
+.card{background:var(--card);border:1px solid var(--border);padding:1.4rem 1.6rem;margin:1.2rem 0;border-radius:6px}
+.card h2{font-size:1.2rem;margin-bottom:.6rem;letter-spacing:.08rem}
+.card ul{margin-left:1.2rem}
+.whisper{font-style:italic;color:var(--muted);font-size:.95rem}
+a.link{color:var(--accent)}
+
+/* 进度指示器：13 面镜子 */
+.mirror-row{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin:.9rem 0;font-size:1.05rem;letter-spacing:.12rem}
+.mirror-node{opacity:.22;transition:opacity .5s,color .5s,text-shadow .5s}
+.mirror-node.lit{opacity:1;color:var(--accent);text-shadow:0 0 10px var(--accent)}
+
+/* 异常字「镜」：像素偏移 + 几乎不可见 */
+.anomaly{position:relative;opacity:.025;cursor:pointer;font-size:.78rem;user-select:none;transition:opacity .5s}
+.anomaly:hover{opacity:.92;text-shadow:2px 0 var(--accent),-2px 0 #1aa6a0}
+.glitch{text-shadow:1.6px 0 #c0392b,-1.6px 0 #16a085;letter-spacing:.06rem}
+
+/* 统一搜索框 */
+.search-box{display:flex;gap:.5rem;margin:1.2rem 0}
+.search-box input{flex:1;padding:.75rem .95rem;border:1px solid var(--border);background:rgba(255,255,255,.6);border-radius:4px;font-size:1rem;color:var(--fg)}
+.search-box button{padding:.75rem 1.4rem;border:0;background:var(--accent);color:#fff;border-radius:4px;cursor:pointer;font-size:1rem;letter-spacing:.1rem}
+.search-box button:hover{filter:brightness(1.08)}
+#searchMsg{color:var(--accent);font-size:.9rem;min-height:1.2rem}
+
+/* 章节标语「你看见的每一面镜子，都是门」 */
+.creed{font-style:italic;color:var(--muted);text-align:center;margin:1.4rem 0;letter-spacing:.1rem}
+.creed b{color:var(--accent);font-style:normal}
+
+footer.site{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted);text-align:center;position:relative}
+
+@media(max-width:540px){
+  header.site h1{font-size:1.45rem}
+  .wrap{padding:0 .85rem}
+  .card{padding:1.1rem 1.1rem}
+}

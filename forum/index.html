@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>万镜教会 · 镜面论坛</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/silver.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>万镜教会 · 镜面论坛</h1>
+    <div class="tagline">你看见的每一面镜子，都是门</div>
+    <nav><a href="../index.html">老槐树</a><a href="../search.html">搜索</a><a href="../about.html">关于</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="node-tag">镜主留言 · 置顶</div>
+      <p>欢迎，第 <b>13</b> 位访客。</p>
+      <p>这里一共有十三面镜子。每一面，都记录过一个人的倒影。你点的每一次「搜索」，都是在替自己擦亮一面镜子。</p>
+      <p class="whisper">十三面镜子都在。你愿意点几面，就点几面。</p>
+    </div>
+
+    <div class="card">
+      <h2>镜面节点索引</h2>
+      <ul class="thread-list">
+        <li><a class="link" href="post_mirror_01.html">① 乾位的邀请（八卦方位）</a></li>
+        <li><a class="link" href="post_mirror_02.html">② 早已给你编号的人（Base64）</a></li>
+        <li><a class="link" href="post_mirror_03.html">③ 把字母反过来（URL 改字）</a></li>
+        <li><a class="link" href="post_mirror_04.html">④ 点、划、门（摩斯电码）</a></li>
+        <li><a class="link" href="post_mirror_05.html">⑤ 字符里的镜子（像素画）</a></li>
+        <li><a class="link" href="post_mirror_06.html">⑥ 倒着读才对（回文）</a></li>
+        <li><a class="link" href="post_mirror_07.html">⑦ 看不见的字（零宽字符）</a></li>
+        <li><a class="link" href="post_mirror_08.html">⑧ 镜中字（镜像翻转）</a></li>
+        <li><a class="link" href="post_mirror_09.html">⑨ 颜色藏字（Hex 解码）</a></li>
+        <li><a class="link" href="post_mirror_10.html">⑩ 一个日期（时间戳）</a></li>
+        <li><a class="link" href="post_mirror_11.html">⑪ 塔的坐标（现实地图）</a></li>
+        <li><a class="link" href="post_mirror_12.html">⑫ 只差一步（工号前奏）</a></li>
+        <li><a class="link" href="post_mirror_13.html">⑬ 第 13 面镜子（你的名字）</a></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <form id="searchForm" method="get" class="search-box">
+        <input id="searchInput" type="text" placeholder="问镜子一个问题…" autocomplete="off">
+        <button type="submit">照镜子</button>
+      </form>
+      <div id="searchMsg"></div>
+    </div>
+
+    <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜面论坛</p>
+    <span class="anomaly glitch">镜</span>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  Progress.setChapter(2);
+  try { Drone.start({ freq: 52, level: 0.03 }); } catch (e) {}
+</script>
+</body>
+</html>

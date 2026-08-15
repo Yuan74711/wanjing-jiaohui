@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>老槐树饺子馆</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/warm.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>老槐树饺子馆</h1>
+    <div class="tagline">手工现包 · 家常味道 · 营业三十一年</div>
+    <nav>
+      <a href="menu.html">菜单</a>
+      <a href="about.html">关于</a>
+      <a href="search.html">站内搜索</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <p>欢迎来老槐树。我们用地道的面粉、当季的菜，包出你记忆里的那一口。</p>
+      <p class="whisper">……你有没有觉得，有些门，看着……像镜子？</p>
+    </div>
+
+    <div class="card">
+      <h2>今日推荐</h2>
+      <ul>
+        <li>槐花猪肉饺 · 18 元 / 两</li>
+        <li>酸菜羊肉饺 · 20 元 / 两</li>
+        <li>三鲜虾仁饺 · 26 元 / 两</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p>地址：城南老街 <b>13</b> 号。每晚 19:00 以后，玻璃窗上会映出很长的影子。</p>
+      <p>如果你在找什么，<a class="link" href="search.html">站内搜索</a> 也许能替你问问镜子。</p>
+    </div>
+
+    <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 老槐树饺子馆 · 自 1999 年至今</p>
+    <!-- 异常字：几乎不可见的「镜」，点击进入 404 -->
+    <span class="anomaly glitch" id="mirrorEgg" title="……">镜</span>
+  </footer>
+</div>
+
+<script src="js/progress.js"></script>
+<script src="js/f12.js"></script>
+<script src="js/audio.js"></script>
+<script>
+  document.getElementById('mirrorEgg').addEventListener('click', function () {
+    try { Drone.start({ freq: 48, level: 0.04 }); } catch (e) {}
+    location.href = '404.html';
+  });
+</script>
+</body>
+</html>

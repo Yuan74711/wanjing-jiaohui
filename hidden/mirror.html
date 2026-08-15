@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>最后一面镜子 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap final-mirror">
+  <main>
+    <div class="mirror-frame">
+      <div class="mirror-glass">
+        <p class="reflected">門都是鏡每的見看你看</p>
+        <p class="you">这是你。</p>
+        <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+        <p class="tiny">工号 <span id="pid">————</span> · 第 13 面镜子 · 已锁定</p>
+      </div>
+    </div>
+
+    <div class="center">
+      <p class="whisper">镜子不会撒谎。从你点开老槐树页脚那个字开始，
+      你就已经站在了这一面里。</p>
+      <a class="link big" href="../index.html">回到最初 ▸</a>
+      <p class="hint">回到老槐树饺子馆，一切会重新开始。下一任第 13 位，正在路上。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜子一直亮着</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  try { document.getElementById('pid').textContent = Progress.getId(); } catch (e) {}
+  try { Progress.setProgress(13); Progress.setChapter(5); } catch (e) {}
+  try { Drone.start({ freq: 18, level: 0.28 }); } catch (e) {}
+  try { Drone.crack(); } catch (e) {}
+</script>
+</body>
+</html>

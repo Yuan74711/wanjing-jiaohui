@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>镜面节点 ② · 早已给你编号的人</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/silver.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>万镜教会 · 镜面论坛</h1>
+    <div class="tagline">你看见的每一面镜子，都是门</div>
+    <nav><a href="index.html">论坛</a><a href="../search.html">搜索</a><a href="../index.html">老槐树</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="node-tag">镜面节点 2 / 13</div>
+      <h2>早已给你编号的人</h2>
+      <p>有人在你来之前，就把你写进了名册。下面这串，是给你的留言（Base64）：</p>
+      <pre class="code">5L2g5bey6KKr55m76K6w44CC5LiA5Liq5pep5bCx5YaZ6L+b5ZCN5YaM55qE5Lq677yM5LiN5b+F5oOK6K6244CC</pre>
+      <p class="whisper">把这串交给任意 Base64 解码器，你会读到镜主留的话。</p>
+      <p class="whisper">镜子会自己领你走。回到论坛，剩下的都在那儿。</p>
+    </div>
+
+    <div class="card">
+      <form id="searchForm" method="get" class="search-box">
+        <input id="searchInput" type="text" placeholder="问镜子一个问题…" autocomplete="off">
+        <button type="submit">照镜子</button>
+      </form>
+      <div id="searchMsg"></div>
+    </div>
+
+    <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜面论坛</p>
+    <span class="anomaly glitch">镜</span>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  Progress.setChapter(2);
+  Progress.setProgress(2);
+  try { Drone.start({ freq: 50.5, level: 0.04 }); } catch (e) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>内容管理后台 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>内容管理后台</h1>
+    <div class="tagline">万镜教会 · 镜面论坛 · 审核员专用</div>
+    <nav>
+      <a href="#" id="leaveLink">× 退出</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>登录状态</h2>
+      <p id="login">正在以审核员身份自动登录……</p>
+      <p class="whisper">你从没输入过密码。系统早就认识你。</p>
+    </div>
+
+    <div class="card">
+      <h2>镜面节点 · 登记表</h2>
+      <table class="nodes">
+        <thead><tr><th>节点</th><th>状态</th><th>登记对象</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <div class="card danger">
+      <h2>第 13 次镜面仪式</h2>
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+      <p>在下方做出你的选择。镜主在等。</p>
+      <input id="choice" type="text" placeholder="输入：拒绝 / 接受 / MIRROR_EXIT" autocomplete="off">
+      <div class="btns">
+        <button data-go="reject">拒绝</button>
+        <button data-go="accept">接受</button>
+        <button data-go="exit">MIRROR_EXIT</button>
+      </div>
+      <p id="hint" class="hint"></p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 后台无法关闭</p>
+  </footer>
+</div>
+
+<!-- 弹出框：仪式完成 -->
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <p class="modal-title">仪式完成</p>
+    <p>感谢您完成<b>万镜教会第 13 次镜面仪式</b>。</p>
+    <p class="whisper">镜主正在凝视你。</p>
+    <button id="modalClose">我明白了</button>
+  </div>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  (function () {
+    var id = '————';
+    try { id = Progress.getId(); Progress.setChapter(4); } catch (e) {}
+
+    // 自动登录
+    document.getElementById('login').innerHTML =
+      '已登录：审核员 <b>' + id + '</b>（自动认证 · 无需密码）';
+
+    // 13 节点表格
+    var rows = document.getElementById('rows');
+    for (var n = 1; n <= 13; n++) {
+      var tr = document.createElement('tr');
+      var who = n === 13 ? ('第13位祭品 · ' + id) : ('已登记 · 0' + n);
+      if (n === 13) tr.className = 'me';
+      tr.innerHTML = '<td>第 ' + n + ' 面镜子</td><td>✓</td><td>' + who + '</td>';
+      rows.appendChild(tr);
+    }
+
+    // 弹出框
+    setTimeout(function () {
+      document.getElementById('modal').classList.add('show');
+      try { Drone.start({ freq: 30, level: 0.16 }); } catch (e) {}
+      try { Drone.crack(); } catch (e) {}
+    }, 1400);
+    document.getElementById('modalClose').addEventListener('click', function () {
+      document.getElementById('modal').classList.remove('show');
+    });
+
+    // 决定结局
+    var map = {
+      reject: '../endings/reject.html',
+      accept: '../endings/accept.html',
+      exit: '../endings/mirror_exit.html'
+    };
+    function decide(text) {
+      var t = (text || '').trim().toUpperCase();
+      if (t === 'MIRROR_EXIT') return map.exit;
+      if (t.indexOf('接受') >= 0 || t === 'ACCEPT') return map.accept;
+      if (t.indexOf('拒绝') >= 0 || t === 'REJECT') return map.reject;
+      return null;
+    }
+    document.querySelectorAll('.btns button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        location.href = map[b.getAttribute('data-go')];
+      });
+    });
+    document.getElementById('choice').addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      var dest = decide(this.value);
+      var hint = document.getElementById('hint');
+      if (dest) { location.href = dest; }
+      else { hint.textContent = '镜主没听懂。请输入：拒绝 / 接受 / MIRROR_EXIT'; }
+    });
+
+    // 锁定：拦截"退出"
+    document.getElementById('leaveLink').addEventListener('click', function (e) {
+      e.preventDefault();
+      location.href = 'locked.html';
+    });
+
+    // 锁定刷新 / 关闭
+    window.addEventListener('beforeunload', function (e) {
+      e.preventDefault();
+      e.returnValue = '镜主正在凝视你。确定要离开第 13 次镜面仪式吗？';
+      return e.returnValue;
+    });
+
+    // 锁定后退
+    history.pushState(null, '', location.href);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, '', location.href);
+      // 回到本页，无法后退
+    });
+
+    try { Progress.setProgress(13); } catch (e) {}
+  })();
+</script>
+</body>
+</html>

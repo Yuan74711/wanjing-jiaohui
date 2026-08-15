@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>证据 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>镜面论坛 · 证据</h1>
+    <div class="tagline">你以为在调查邪教。其实每一步，都在完成仪式。</div>
+    <nav>
+      <a href="../search.html">站内搜索</a>
+      <a href="../forum/index.html">返回论坛</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>你已经收集到的</h2>
+      <ul id="board" class="board"></ul>
+    </div>
+
+    <div class="card">
+      <h2>一个不舒服的发现</h2>
+      <p>十三面镜子，你全部点亮了。</p>
+      <p class="whisper">镜主说：第十三面镜子，是留给「调查者」的。
+      你不是来破案的。你是第十三件祭品。</p>
+      <p class="creed">你看见的每一面镜子，<b>都是门</b>。</p>
+    </div>
+
+    <div class="card danger">
+      <h2>该确认了</h2>
+      <p class="whisper">系统早就认识你。该回去，把名字念完。</p>
+      <p><a class="link" id="enter" href="../backend/auditor.html">内容管理后台</a></p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 门已经为你打开</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  (function () {
+    var board = document.getElementById('board');
+    var items = [
+      '老槐树饺子馆页脚的「镜」字',
+      '404 页倒置广告里的摩斯电码：万镜教会',
+      '镜面论坛的 13 个帖子',
+      '口号：你看见的每一面镜子，都是门',
+      '坐标指向的那座塔',
+      '街景招牌玻璃里映出的工号',
+      '塔顶红灯数到 13',
+      '搜索框被镜主监视'
+    ];
+    items.forEach(function (t) {
+      var li = document.createElement('li');
+      li.textContent = '✔ ' + t;
+      board.appendChild(li);
+    });
+
+    document.getElementById('enter').addEventListener('click', function () {
+      try { Drone.start({ freq: 33, level: 0.12 }); } catch (e) {}
+      // 标记进入第四章
+      try { Progress.setChapter(4); } catch (e) {}
+      location.href = '../backend/auditor.html';
+    });
+  })();
+  try { Progress.setProgress(13); } catch (e) {}
+</script>
+</body>
+</html>

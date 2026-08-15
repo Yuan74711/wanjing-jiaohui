@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>街景 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>镜面论坛 · 街景</h1>
+    <div class="tagline">老槐树饺子馆的隔壁，新开了一间工作室。</div>
+    <nav>
+      <a href="../search.html">站内搜索</a>
+      <a href="../forum/index.html">返回论坛</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>招牌</h2>
+      <div class="street">
+        <div class="shop">老槐树饺子馆</div>
+        <div class="shop neon" id="sign">万镜影像工作室</div>
+        <div class="shop">城南老街 13 号</div>
+      </div>
+      <p class="whisper">你盯着「万镜影像工作室」的玻璃门，门里映出的不是街景，
+      是镜面论坛的帖子列表。你的工号，排在第十三行。</p>
+    </div>
+
+    <div class="card">
+      <h2>门上的字</h2>
+      <p>玻璃上用极淡的字写着：<span class="mirror-text">門都是鏡</span></p>
+      <p class="hint">把这句从右往左、对着光看——它和论坛首页的口号是同一句话。</p>
+    </div>
+
+    <div class="card">
+      <h2>抬头</h2>
+      <p class="whisper">塔顶有灯，街角有人在看你。把想到的词，交给搜索框。</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 招牌一直亮着，等你抬头</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  // 招牌玻璃"映出"玩家工号
+  (function () {
+    var sign = document.getElementById('sign');
+    try {
+      var id = Progress.getId();
+      var tag = document.createElement('div');
+      tag.className = 'reflection';
+      tag.textContent = '第13行 · ' + id;
+      sign.appendChild(tag);
+    } catch (e) {}
+  })();
+  try { Progress.setProgress(13); } catch (e) {}
+  try { Drone.start({ freq: 41, level: 0.06 }); } catch (e) {}
+</script>
+</body>
+</html>

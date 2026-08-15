@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>红房间 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap red">
+  <header class="site">
+    <h1>红房间</h1>
+    <div class="tagline">历届祭品，留下的话</div>
+    <nav><a href="../endings/mirror_exit.html">返回</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <p class="whisper">镜子深处，有一间红房间。每一任第 13 位，都会在这里留一句话。
+      下面是能读到的部分。</p>
+      <ul id="board" class="board"></ul>
+    </div>
+
+    <div class="card">
+      <h2>你的一句话</h2>
+      <p>作为 2026 季第 13 位，你也留下点什么吧。</p>
+      <input id="msg" type="text" placeholder="留一句话给下一任……" autocomplete="off">
+      <button id="leave">留下</button>
+      <p id="mine" class="hint"></p>
+    </div>
+
+    <div class="card center">
+      <a class="link" href="../hidden/mirror.html">走向最后一面镜子 ▸</a>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 红房间一直亮着</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  (function () {
+    var board = document.getElementById('board');
+    var old = [
+      '1999-13：门开了，我就没回头。',
+      '2007-13：别点那个「镜」字。我说真的。',
+      '2015-13：原来前十二位都回家了，只有我留下来。',
+      '2021-13：你好啊，下一任。椅子给你留着。'
+    ];
+    old.forEach(function (t) {
+      var li = document.createElement('li');
+      li.textContent = '· ' + t;
+      board.appendChild(li);
+    });
+
+    var id = '————';
+    try { id = Progress.getId(); } catch (e) {}
+
+    document.getElementById('leave').addEventListener('click', function () {
+      var v = document.getElementById('msg').value.trim();
+      if (!v) return;
+      var li = document.createElement('li');
+      li.className = 'me';
+      li.textContent = '· ' + id + '（你）：' + v;
+      board.appendChild(li);
+      document.getElementById('mine').textContent = '已留下。它会一直亮在红房间里。';
+      document.getElementById('msg').value = '';
+      try { Drone.start({ freq: 20, level: 0.26 }); } catch (e) {}
+    });
+
+    try { Progress.setProgress(13); } catch (e) {}
+    try { Drone.start({ freq: 19, level: 0.24 }); } catch (e) {}
+  })();
+</script>
+</body>
+</html>

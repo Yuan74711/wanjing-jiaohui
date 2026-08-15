@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>镜面节点 ⑫ · 只差一步</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/silver.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>万镜教会 · 镜面论坛</h1>
+    <div class="tagline">你看见的每一面镜子，都是门</div>
+    <nav><a href="index.html">论坛</a><a href="../search.html">搜索</a><a href="../index.html">老槐树</a></nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="node-tag">镜面节点 12 / 13</div>
+      <h2>只差一步</h2>
+      <p>第十二面镜子，几乎要说出你的名字了。</p>
+      <p>「你的编号，已经在路上了。它不是我们给你的——是你每一次点击、每一次搜索，自己走到这里来的。」</p>
+      <p class="whisper">最后一面镜子，会把它念出来。那是第十三面，也是你该站的位置。</p>
+      <p class="whisper">最后一面镜子，正在等你。回到论坛，找它。</p>
+    </div>
+
+    <div class="card">
+      <form id="searchForm" method="get" class="search-box">
+        <input id="searchInput" type="text" placeholder="问镜子一个问题…" autocomplete="off">
+        <button type="submit">照镜子</button>
+      </form>
+      <div id="searchMsg"></div>
+    </div>
+
+    <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 镜面论坛</p>
+    <span class="anomaly glitch">镜</span>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/search.js"></script>
+<script src="../js/audio.js"></script>
+<script>
+  Progress.setChapter(2);
+  Progress.setProgress(12);
+  try { Drone.start({ freq: 45.5, level: 0.09 }); } catch (e) {}
+</script>
+</body>
+</html>
