@@ -8,13 +8,18 @@
   --border:rgba(0,0,0,.10);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
+html{height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+img,svg,video,canvas,iframe{max-width:100%;height:auto;display:block}
 body{
   font-family:"Noto Serif SC",Georgia,"Songti SC","SimSun",serif;
   background:var(--bg);
   color:var(--fg);
   line-height:1.85;
   padding:0 0 5rem;
+  min-height:100vh;min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+  -webkit-font-smoothing:antialiased;
   transition:background 1.4s ease,color 1.4s ease;
 }
 .wrap{max-width:780px;margin:0 auto;padding:0 1.2rem}
@@ -104,7 +109,7 @@ pre.log{font-size:.82rem;line-height:1.7;color:var(--fg);font-family:"SFMono-Reg
 .reg li{padding:.6rem 0;border-bottom:1px dashed var(--border);line-height:1.75}
 .reg li span{display:inline-block;min-width:5.5rem;color:var(--accent);font-size:.85rem;letter-spacing:.04rem}
 /* 镜背刻痕（暗码块） */
-pre.code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:1.5rem;letter-spacing:.4rem;color:var(--accent);text-align:center;padding:1rem;margin:.4rem 0;background:rgba(0,0,0,.06);border-radius:4px}
+pre.code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:1.5rem;letter-spacing:.4rem;color:var(--accent);text-align:center;padding:1rem;margin:.4rem 0;background:rgba(0,0,0,.06);border-radius:4px;max-width:100%;overflow-x:auto}
 
 /* ===== 镜面谜题输入框 ===== */
 .puzzle{margin:1.4rem 0;padding:1.1rem 1.2rem;border:1px solid var(--border);border-radius:6px;background:rgba(0,0,0,.12)}
@@ -143,11 +148,11 @@ pre.code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:1.5rem;
   .btns button{min-width:0}
   /* 坐标格在手机上略缩 */
   .mapgrid{max-width:300px}
-  /* 5列表格在窄屏横向滚动，避免裁切 */
-  .card>table.nodes{display:block;overflow-x:auto;white-space:nowrap;font-size:.78rem}
-  .card>table.nodes td,.card>table.nodes th{padding:.4rem .3rem}
-    /* 隐藏的「镜」字：放大点击区，便于误触/有意点击 */
-  .anomaly{font-size:1rem}
+  /* 5列表格在窄屏横向滚动，避免裁切（去掉 .card> 限定，覆盖所有嵌套层级） */
+  table.nodes{display:block;overflow-x:auto;white-space:nowrap;font-size:.78rem}
+  table.nodes td,table.nodes th{padding:.4rem .3rem}
+    /* 隐藏的「镜」字：放大点击区，便于误触/有意点击（负 margin 扩区，不动布局） */
+  .anomaly{font-size:1rem;padding:.35rem .5rem;margin:-.35rem -.5rem}
   /* 搜索历史记录 */
   .search-history{margin-top:1rem;border-top:1px dashed var(--border);padding-top:.8rem}
   .search-history .sh-title{font-size:.74rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.05rem}
@@ -165,3 +170,8 @@ pre.code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:1.5rem;
 }
 
 .puzzle-done{margin:1.4rem 0;padding:.9rem 1.1rem;border:1px solid var(--accent);border-radius:6px;color:var(--fg);background:rgba(142,68,173,.1);letter-spacing:.05rem}
+
+/* ===== 无障碍：用户偏好「减少动态效果」时，关闭闪烁/呼吸动画，避免不适 ===== */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
