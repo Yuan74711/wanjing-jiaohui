@@ -12,19 +12,20 @@
   <header class="site">
     <h1>档案 · 1999 失踪观众</h1>
     <div class="tagline">万镜教会 · 内部留存（请勿外传）</div>
-    <nav><a href="../endings/mirror_exit.html">返回</a></nav>
+    <nav><a href="../search.html?q=1999">刷新</a><a href="../forum/index.html">返回论坛</a></nav>
   </header>
 
   <main>
     <div class="card">
       <p>《万镜夜话》1999 年首播季，参与「镜面仪式」的 13 名观众。
-      节目录制至第 13 夜后中断，官方记为「信号故障」。以下为教会内部留存档案。</p>
+      节目录制至第 13 夜后中断，官方记为「信号故障」。以下为教会内部留存档案。
+      档案编号：<b>1999-13</b>　状态：<b>未结案</b>。</p>
       <p class="hint">第 13 名，按仪式惯例，不归还。</p>
     </div>
 
     <div class="card">
       <table class="nodes">
-        <thead><tr><th>编号</th><th>姓名</th><th>节点</th><th>状态</th></tr></thead>
+        <thead><tr><th>编号</th><th>姓名</th><th>节点</th><th>状态</th><th>最后的话</th></tr></thead>
         <tbody id="list"></tbody>
       </table>
     </div>
@@ -32,8 +33,16 @@
     <div class="card danger">
       <h2>2026 季</h2>
       <p>本季第 13 位「观众」工号：<b id="pid">————</b>。</p>
-      <p class="whisper">仪式仍在直播。你不是第一个，也不会是最后一个。</p>
+      <p class="whisper" id="lastline">这一席，空了 27 年。今晚，系统第一次给它填上了新编号。</p>
+      <p><a class="link" href="../realworld/tower.html">那档节目的信号，至今还在塔顶广播 ▸</a></p>
       <a class="link" href="../hidden/transcript.html">看 1999 首播转录 ▸</a>
+    </div>
+
+    <div class="card">
+      <h3>你不是第一个</h3>
+      <p>1999 那一夜，也有一个审核员，像你一样，把「你看见的每一面镜子，都是门」举报了又放出来。他再没上线。</p>
+      <p class="whisper">二十七年过去，那句话换了个壳——老槐树饺子馆——又找到了能听见的人。那个人，是你。</p>
+      <p><a class="link" href="../forum/index.html">回到论坛，把第十三面镜子填上 ▸</a></p>
     </div>
   </main>
 
@@ -49,17 +58,38 @@
 <script>
   var names = ['沈槐','林镜','周野','陈十三','赵南','吴桐','郑川',
                '孙禾','钱穆','冯夜','褚光','卫岚','镜·佚名'];
+  var lastWords = [
+    '城南老街13号，我来了。',
+    '镜子不照人，照念想。',
+    '我数到十二就困了。',
+    '第十三个，是不是该我了？',
+    '他们说门开了，我怎么没看见。',
+    '别关灯。',
+    '再播一次，我就走。',
+    '主持人，你也在镜子里吗？',
+    '这节目怎么关不掉。',
+    '1999，停了吧，求你了。',
+    '我听见塔在响。',
+    '下一季，换我来当镜主。',
+    '——'  // 第十三席：一直空着
+  ];
   var list = document.getElementById('list');
   for (var n = 1; n <= 13; n++) {
     var tr = document.createElement('tr');
     var st = n === 13 ? '留在镜中 ▣' : '已归还';
     if (n === 13) tr.className = 'me';
     tr.innerHTML = '<td>1999-' + (n < 10 ? '0' + n : n) + '</td><td>' +
-      names[n - 1] + '</td><td>第 ' + n + ' 面镜子</td><td>' + st + '</td>';
+      names[n - 1] + '</td><td>第 ' + n + ' 面镜子</td><td>' + st + '</td>' +
+      '<td class="lw">' + lastWords[n - 1] + '</td>';
     list.appendChild(tr);
   }
   try { document.getElementById('pid').textContent = Progress.getId(); } catch (e) {}
-  try { Progress.setProgress(13); } catch (e) {}
+  // 第 13 位观众「最后的搜索」，与玩家此刻的搜索一致
+  try {
+    var lq = localStorage.getItem('lastQuery');
+    var ll = document.getElementById('lastline');
+    if (lq && ll) ll.textContent = '第 13 位观众留在控制台的最后一行，和你刚才搜的一模一样：『' + lq + '』。';
+  } catch (e) {}
   try { Drone.start({ freq: 23, level: 0.2 }); } catch (e) {}
 </script>
 </body>

@@ -80,6 +80,7 @@ footer.site{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border
 table.nodes{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:.4rem}
 table.nodes th,table.nodes td{text-align:left;padding:.5rem .4rem;border-bottom:1px solid var(--border);white-space:nowrap}
 table.nodes th{color:var(--muted);font-weight:600}
+table.nodes td.lw{color:var(--muted);font-size:.82rem;font-style:italic;white-space:normal;max-width:220px}
 /* 结局选择按钮 */
 .btns{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.7rem}
 .btns button{flex:1;min-width:120px;padding:.75rem 1rem;border:1px solid var(--accent);background:transparent;color:var(--fg);border-radius:4px;cursor:pointer;font-size:.95rem;letter-spacing:.05rem;font-family:inherit}
@@ -142,6 +143,9 @@ pre.code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:1.5rem;
   .btns button{min-width:0}
   /* 坐标格在手机上略缩 */
   .mapgrid{max-width:300px}
+  /* 5列表格在窄屏横向滚动，避免裁切 */
+  .card>table.nodes{display:block;overflow-x:auto;white-space:nowrap;font-size:.78rem}
+  .card>table.nodes td,.card>table.nodes th{padding:.4rem .3rem}
   /* 隐藏的「镜」字：放大点击区，便于误触/有意点击 */
   .anomaly{font-size:1rem}
   footer.site{font-size:.74rem;padding-top:1.2rem}

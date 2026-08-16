@@ -73,6 +73,6 @@
       });
     }
     // 若被带 ?q= 直达，则直接路由（同样用站点根拼接）
-    if (q) { const dest = route(q); if (dest) location.href = siteBase() + dest; }
+    if (q) { localStorage.setItem('lastQuery', q); const dest = route(q); if (dest) location.href = siteBase() + dest; }
   });
 })();
