@@ -40,6 +40,12 @@
       <h2>抬头</h2>
       <p class="whisper">塔顶有灯，街角有人在看你。把想到的词，交给搜索框。</p>
     </div>
+
+    <div class="card" id="doorCard">
+      <h2>玻璃门</h2>
+      <p class="whisper">「万镜影像工作室」的玻璃门，你刚来的时候只是玻璃。门里映着镜面论坛的帖子列表，你的工号排在第十三行。</p>
+      <div id="doorBox"></div>
+    </div>
   </main>
 
     <div class="card">
@@ -62,6 +68,7 @@
 <script src="../js/f12.js"></script>
 <script src="../js/audio.js"></script>
 <script src="../js/search.js"></script>
+<script src="../js/loops.js"></script>
 <script>
   // 招牌玻璃"映出"玩家工号
   (function () {
@@ -75,6 +82,28 @@
     } catch (e) {}
   })();
   try { Drone.start({ freq: 41, level: 0.06 }); } catch (e) {}
+
+  // 玻璃门：箱庭式回灌——需先认得「十三」(节点7) 且见过「那一夜」(1999档案)
+  try {
+    var PID = (window.Progress && Progress.getId) ? Progress.getId() : '';
+    Loops.mountDoor({
+      box: 'doorBox', inputId: 'doorInput', btnId: 'doorBtn', msgId: 'doorMsg',
+      required: function () {
+        return window.MirrorPuzzle && MirrorPuzzle.isSolved(7) && window.Loops && Loops.has('seatThirteen');
+      },
+      dormant: '玻璃门现在只是玻璃。说得动它的词，得等你先认得「十三」、又见过了「那一夜（1999）」。',
+      prompt: '对着玻璃门，说一个词：',
+      placeholder: '十三 / 镜主 / 你的工号',
+      accept: ['十三', '镜主', PID],
+      fail: '玻璃门没有回应。这个词，还差一点火候。',
+      setFlag: 'studioOpen',
+      reveal:
+        '<p class="creed">门，开了。</p>' +
+        '<p>玻璃门不再是玻璃。门里映出的，是 1999 年那间从未关机的直播间控制室——你的工号 <b>' + PID + '</b>，排在第十三行，灯还亮着。</p>' +
+        '<p class="whisper">原来「万镜影像工作室」就是那档节目的控制室。镜子从没关过，只是你一直以为它停了。</p>' +
+        '<p><a class="link" href="../hidden/broadcast.html">推门进去：1999 直播间控制室 ▸</a></p>'
+    });
+  } catch (e) {}
 </script>
 </body>
 </html>

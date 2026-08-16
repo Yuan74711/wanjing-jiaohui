@@ -48,11 +48,14 @@
     '万镜夜话': 'hidden/prehistory.html',
     '节目':     'hidden/prehistory.html',
     '停播':     'hidden/prehistory.html',
-    '前身':     'hidden/prehistory.html'
+    '前身':     'hidden/prehistory.html',
+    '直播间':   'hidden/broadcast.html',
+    '控制室':   'hidden/broadcast.html',
+    '直播间控制室': 'hidden/broadcast.html'
   };
 
   // 后期关键词：需玩家推进到一定程度（点亮≥10面镜子，即走过引入1999的节点10）才解锁
-  const LATE_KEYS = ['1999','失踪','审核员','手记','日志','创立','起源','始末','老板娘','城南','城南老街','之后','继承','第十三面之后','转录','最后一面镜子','红房间','redroom','证据','信条','每一面镜子','万镜夜话','节目','停播','前身'];
+  const LATE_KEYS = ['1999','失踪','审核员','手记','日志','创立','起源','始末','老板娘','城南','城南老街','之后','继承','第十三面之后','转录','最后一面镜子','红房间','redroom','证据','信条','每一面镜子','万镜夜话','节目','停播','前身','直播间','控制室'];
   function gateOpen(matchKey) {
     const late = LATE_KEYS.some(function (k) { return matchKey === k || matchKey.toLowerCase().indexOf(k) >= 0; });
     if (!late) return true;

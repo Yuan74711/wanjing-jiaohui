@@ -63,6 +63,12 @@
       <p class="whisper">卡住了？帖子里出现的字、词、数字，都交给搜索框试试。镜子会把你带到下一面镜子。</p>
     </div>
 
+    <div class="card" id="finalCard">
+      <h2>回到起点</h2>
+      <p class="whisper">你从第一面镜子走来，推开了城南的玻璃门，坐进了 1999 的直播间。现在，回到这扇最初的大门前——它还是论坛首页，又不再是了。</p>
+      <div id="finalDoor"></div>
+    </div>
+
     <div class="creed">你看见的每一面镜子，<b>都是门</b>。</div>
   </main>
 
@@ -78,9 +84,33 @@
 <script src="../js/search.js"></script>
 <script src="../js/audio.js"></script>
 <script src="../js/puzzle.js"></script>
+<script src="../js/loops.js"></script>
 <script>
   Progress.setChapter(2);
   try { Drone.start({ freq: 52, level: 0.03 }); } catch (e) {}
+
+  // 回到起点终门：箱庭式回灌——需已推开玻璃门(studioOpen)或进过直播间(broadcastSeen)
+  try {
+    Loops.mountDoor({
+      box: 'finalDoor', inputId: 'finalInput', btnId: 'finalBtn', msgId: 'finalMsg',
+      required: function () {
+        return window.Loops && (Loops.has('studioOpen') || Loops.has('broadcastSeen'));
+      },
+      dormant: '这扇大门现在只是论坛首页。要推开它，得先去城南老街13号推开那扇玻璃门，坐进 1999 的直播间。',
+      prompt: '对着最初的大门，说出你一路看见的那句话：',
+      placeholder: '你看见的每一面镜子，都是门',
+      accept: ['你看见的每一面镜子都是门', '你看见的每一面镜子，都是门'],
+      fail: '大门没有回应。不是密码——是你在十三面镜子里反复撞见的那句口号。',
+      setFlag: 'credoReturned',
+      reveal:
+        '<p class="creed">门，一直开着。</p>' +
+        '<p>你从第一面镜子走来，把十三面都照见，又回到这扇最初的大门前。玻璃门映出的，早已不是论坛首页——是你的倒影，坐在第十三格。</p>' +
+        '<p class="whisper">你不是来玩一个游戏的。你是来把自己的名字，填进 1999 没填完的那一栏。</p>' +
+        '<p>欢迎，第 13 位观众。今晚的直播，开始了。</p>' +
+        '<p><a class="link" href="../hidden/aftermath.html">第十三面之后，会发生什么 ▸</a></p>' +
+        '<p><a class="link" href="../endings/accept.html">留下来，当下一任镜主 ▸</a></p>'
+    });
+  } catch (e) {}
   (function () {
     var stat = document.getElementById('gateStat');
     var open = document.getElementById('gateOpen');

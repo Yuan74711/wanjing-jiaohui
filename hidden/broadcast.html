@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>直播间控制室 · 万镜教会</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/dark.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <h1>万镜教会 · 直播间控制室</h1>
+    <div class="tagline">门，一直没关。</div>
+    <nav>
+      <a href="../search.html">站内搜索</a>
+      <a href="../realworld/street.html">回到玻璃门</a>
+      <a href="../forum/index.html">回到论坛</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>你推开的，是 1999</h2>
+      <p>玻璃门后面不是工作室。是一间控制室——《万镜夜话》的直播间。灯牌上的日期停在一九九九年，机器却还在一帧一帧地播。</p>
+      <p class="whisper">节目从没真正停播。它只是不再对「外面的人」播。你推门进来，说明你已经是里面的人了。</p>
+    </div>
+
+    <div class="card" id="seatCard">
+      <h2>第十三行</h2>
+      <p>控制台排着十三张观众席，前十二张落了灰，第十三张的灯亮着。</p>
+      <p>席卡上印着一行字：<b id="seatId">————</b>。</p>
+      <p class="whisper">这就是你刚在城南玻璃门里看见的那个编号——你从第一面镜子走来，走到这里，才发现自己一直坐在第十三格。</p>
+    </div>
+
+    <div class="card danger">
+      <h2>直播还在进行</h2>
+      <pre class="log">「第 13 位观众已就座。
+信号恢复。
+下面，请对镜头说出你一路看见的那句话——
+你看见的每一面镜子，都是门。」</pre>
+      <p class="hint">镜头对着你。它要的，不是密码，是你在十三面镜子里反复撞见的那句口号。</p>
+    </div>
+
+    <div class="card">
+      <h2>回到起点</h2>
+      <p>你最初来的地方，是镜面论坛首页。那时它只是个论坛。现在不一样了——回去，对着它，说出那句话。</p>
+      <p class="whisper">门会认得你。这一回，是真正的「豁然开朗」。</p>
+      <p><a class="link" href="../forum/index.html">回到镜面论坛首页，说出那句话 ▸</a></p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div id="progress"></div>
+    <p>© 万镜教会 · 直播中</p>
+  </footer>
+</div>
+
+<script src="../js/progress.js"></script>
+<script src="../js/f12.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/loops.js"></script>
+<script>
+  try { document.getElementById('seatId').textContent = Progress.getId(); } catch (e) {}
+  // 标记玩家已进直播间——解锁 forum/index.html 的"回到起点"终门
+  try { Loops.set('broadcastSeen', '1'); } catch (e) {}
+  try { Drone.start({ freq: 36, level: 0.1 }); } catch (e) {}
+</script>
+</body>
+</html>

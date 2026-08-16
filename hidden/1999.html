@@ -45,6 +45,13 @@
       <p class="whisper">二十七年过去，那句话换了个壳——老槐树饺子馆——又找到了能听见的人。那个人，是你。</p>
       <p><a class="link" href="../forum/index.html">回到论坛，把第十三面镜子填上 ▸</a></p>
     </div>
+
+    <div class="card">
+      <h3>带它回去</h3>
+      <p>第十三席的回响，不该只留在这份档案里。城南老街13号，那扇你早就看过的玻璃门——门缝还亮着。</p>
+      <p class="whisper">等你认得了「十三」（第七面镜子里的数），回去对它说那个词。门会认得你。</p>
+      <p><a class="link" href="../realworld/street.html">回到城南那扇玻璃门 ▸</a></p>
+    </div>
   </main>
 
   <footer class="site">
@@ -56,6 +63,7 @@
 <script src="../js/progress.js"></script>
 <script src="../js/f12.js"></script>
 <script src="../js/audio.js"></script>
+<script src="../js/loops.js"></script>
 <script>
   var names = ['沈槐','林镜','周野','陈十三','赵南','吴桐','郑川',
                '孙禾','钱穆','冯夜','褚光','卫岚','镜·佚名'];
@@ -85,6 +93,8 @@
     list.appendChild(tr);
   }
   try { document.getElementById('pid').textContent = Progress.getId(); } catch (e) {}
+  // 标记玩家已见第十三席——解锁 street.html 玻璃门回灌
+  try { Loops.set('seatThirteen', '1'); } catch (e) {}
   // 第 13 位观众「最后的搜索」，与玩家此刻的搜索一致
   try {
     var lq = localStorage.getItem('lastQuery');
