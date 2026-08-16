@@ -146,8 +146,16 @@ pre.code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:1.5rem;
   /* 5列表格在窄屏横向滚动，避免裁切 */
   .card>table.nodes{display:block;overflow-x:auto;white-space:nowrap;font-size:.78rem}
   .card>table.nodes td,.card>table.nodes th{padding:.4rem .3rem}
-  /* 隐藏的「镜」字：放大点击区，便于误触/有意点击 */
+    /* 隐藏的「镜」字：放大点击区，便于误触/有意点击 */
   .anomaly{font-size:1rem}
+  /* 搜索历史记录 */
+  .search-history{margin-top:1rem;border-top:1px dashed var(--border);padding-top:.8rem}
+  .search-history .sh-title{font-size:.74rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.05rem}
+  .search-history .sh-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+  .search-history .sh-chip{padding:.3rem .75rem;border:1px solid var(--border);background:transparent;color:var(--fg);border-radius:999px;font-size:.82rem;cursor:pointer;font-family:inherit;transition:.2s}
+  .search-history .sh-chip:hover{border-color:var(--accent);color:var(--accent)}
+  .search-history .sh-clear{margin-top:.6rem;background:none;border:0;color:var(--muted);font-size:.74rem;cursor:pointer;text-decoration:underline;font-family:inherit}
+  .search-history .sh-clear:hover{color:var(--accent)}
   footer.site{font-size:.74rem;padding-top:1.2rem}
 }
 @media(max-width:360px){

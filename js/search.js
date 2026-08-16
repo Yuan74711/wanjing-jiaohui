@@ -1,10 +1,10 @@
-/* ===== 统一搜索路由：search.html?q=关键词 → 跳转 ===== */
+/* ===== 统一搜索路由：search.html?q=关键词 → 跳转（含历史记录） ===== */
 (function () {
   // 关键词 → 目标页面（均相对站点根目录）
   const ROUTES = {
     '万镜教会': 'forum/index.html',
-    '镜面论坛': 'forum/index.html',
     '镜主':     'forum/index.html',
+    '镜面论坛': 'forum/index.html',
     '镜子':     'forum/post_mirror_01.html',
     '节点':     'forum/post_mirror_01.html',
     '坐标':     'realworld/coordinates.html',
@@ -27,11 +27,45 @@
     '转录':     'hidden/transcript.html',
     '最后一面镜子': 'hidden/mirror.html',
     '饺子':     'index.html',
-    '老槐树':   'index.html'
+    '老槐树':   'index.html',
+    // 剧情扩展页
+    '审核员':   'hidden/moderator_log.html',
+    '手记':     'hidden/moderator_log.html',
+    '日志':     'hidden/moderator_log.html',
+    '创立':     'hidden/founding.html',
+    '起源':     'hidden/founding.html',
+    '始末':     'hidden/founding.html',
+    '老板娘':   'realworld/dumpling.html',
+    '城南':     'realworld/dumpling.html',
+    '城南老街': 'realworld/dumpling.html',
+    '之后':     'hidden/aftermath.html',
+    '继承':     'hidden/aftermath.html',
+    '第十三面之后': 'hidden/aftermath.html'
   };
 
-  // 站点根目录（绝对 URL，兼容 GitHub Pages 子路径 / 本地 file:// 两种部署）
-  // 通过当前脚本自身路径反推：.../wanjing-jiaohui/js/search.js → .../wanjing-jiaohui/
+  const KEY_H = 'searchHistory';
+
+  function loadHistory() {
+    try { return JSON.parse(localStorage.getItem(KEY_H) || '[]'); } catch (e) { return []; }
+  }
+  function saveHistory(arr) {
+    try { localStorage.setItem(KEY_H, JSON.stringify(arr)); } catch (e) {}
+  }
+  function pushHistory(term) {
+    term = (term || '').trim();
+    if (!term) return;
+    var h = loadHistory();
+    // 去重（忽略大小写），新词置顶
+    h = h.filter(function (x) { return x.toLowerCase() !== term.toLowerCase(); });
+    h.unshift(term);
+    if (h.length > 12) h = h.slice(0, 12);
+    saveHistory(h);
+  }
+  function clearHistory() {
+    try { localStorage.removeItem(KEY_H); } catch (e) {}
+  }
+
+  // 站点根目录（兼容 GitHub Pages 子路径 / 本地 file:// 两种部署）
   function siteBase() {
     const here = (document.currentScript && document.currentScript.src) || location.href;
     const m = here.match(/^(.*?)\/(?:js|css)\//);
@@ -40,10 +74,8 @@
     segs.pop();
     return location.origin + '/' + segs.join('/') + '/';
   }
-  function rootPrefix() { return siteBase(); } // 兼容旧引用
-  function relSearch() {
-    return siteBase() + 'search.html';
-  }
+  function rootPrefix() { return siteBase(); }
+  function relSearch() { return siteBase() + 'search.html'; }
   function route(q) {
     const key = (q || '').trim().toLowerCase();
     if (!key) return null;
@@ -51,15 +83,60 @@
     for (const k in ROUTES) { if (key.indexOf(k) >= 0) return ROUTES[k]; }
     return null;
   }
-  window.MirrorSearch = { relSearch: relSearch, route: route, rootPrefix: rootPrefix, siteBase: siteBase, ROUTES: ROUTES };
+
+  window.MirrorSearch = {
+    relSearch: relSearch, route: route, rootPrefix: rootPrefix, siteBase: siteBase,
+    ROUTES: ROUTES, pushHistory: pushHistory, clearHistory: clearHistory, loadHistory: loadHistory
+  };
 
   document.addEventListener('DOMContentLoaded', function () {
     const params = new URLSearchParams(location.search);
     const q = params.get('q');
+
+    function esc(s) {
+      return (s || '').replace(/[<>&"]/g, function (c) {
+        return { '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' }[c];
+      });
+    }
+    function renderHistory(box, form, input) {
+      const h = loadHistory();
+      if (!h.length) { box.innerHTML = ''; return; }
+      let html = '<div class="sh-title">你照过的镜子：</div><div class="sh-chips">';
+      h.forEach(function (term) {
+        html += '<button type="button" class="sh-chip" data-term="' + esc(term) + '">' + esc(term) + '</button>';
+      });
+      html += '</div><button type="button" class="sh-clear">清除历史</button>';
+      box.innerHTML = html;
+      box.querySelectorAll('.sh-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          if (input) input.value = chip.getAttribute('data-term');
+          form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        });
+      });
+      const clr = box.querySelector('.sh-clear');
+      if (clr) clr.addEventListener('click', function () { clearHistory(); renderHistory(box, form, input); });
+    }
+
+    // 自动给每个搜索框挂上历史记录
+    const forms = document.querySelectorAll('form#searchForm');
+    forms.forEach(function (form) {
+      const input = form.querySelector('#searchInput') || form.querySelector('input');
+      let box = form.parentNode.querySelector('.search-history');
+      if (!box) {
+        box = document.createElement('div');
+        box.className = 'search-history';
+        if (form.nextSibling) form.parentNode.insertBefore(box, form.nextSibling);
+        else form.parentNode.appendChild(box);
+      }
+      renderHistory(box, form, input);
+      form.addEventListener('submit', function () {
+        setTimeout(function () { renderHistory(box, form, input); }, 0);
+      });
+    });
+
     const form = document.getElementById('searchForm');
     const input = document.getElementById('searchInput');
     const msg = document.getElementById('searchMsg');
-
     if (form) {
       form.action = relSearch();
       form.addEventListener('submit', function (e) {
@@ -67,12 +144,15 @@
         const v = input.value;
         localStorage.setItem('lastQuery', v);
         const dest = route(v);
-        // 目标路径相对站点根，用绝对站点根拼接（兼容子路径部署）
-        if (dest) location.href = siteBase() + dest;
+        if (dest) { pushHistory(v); location.href = siteBase() + dest; }
         else if (msg) msg.textContent = '“' + v + '” 在镜中没有任何倒影。再想想？';
       });
     }
     // 若被带 ?q= 直达，则直接路由（同样用站点根拼接）
-    if (q) { localStorage.setItem('lastQuery', q); const dest = route(q); if (dest) location.href = siteBase() + dest; }
+    if (q) {
+      localStorage.setItem('lastQuery', q);
+      const dest = route(q);
+      if (dest) { pushHistory(q); location.href = siteBase() + dest; }
+    }
   });
 })();
