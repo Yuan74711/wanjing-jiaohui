@@ -96,6 +96,14 @@ table.nodes th{color:var(--muted);font-weight:600}
 /* 预格式化文本（日志/转录）在窄屏自动换行，避免横向滚动 */
 pre{white-space:pre-wrap;word-break:break-word;overflow-x:auto}
 pre.log{font-size:.82rem;line-height:1.7;color:var(--fg);font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+/* 镜面节点内小标题 */
+.card h3{font-size:1.02rem;margin:.2rem 0 .7rem;letter-spacing:.06rem;color:var(--accent);opacity:.92}
+/* 名册残页列表 */
+.reg{list-style:none;margin:.4rem 0 .2rem;padding:0}
+.reg li{padding:.6rem 0;border-bottom:1px dashed var(--border);line-height:1.75}
+.reg li span{display:inline-block;min-width:5.5rem;color:var(--accent);font-size:.85rem;letter-spacing:.04rem}
+/* 镜背刻痕（暗码块） */
+pre.code{font-family:"SFMono-Regular",Consolas,Menlo,monospace;font-size:1.5rem;letter-spacing:.4rem;color:var(--accent);text-align:center;padding:1rem;margin:.4rem 0;background:rgba(0,0,0,.06);border-radius:4px}
 
 /* ===== 镜面谜题输入框 ===== */
 .puzzle{margin:1.4rem 0;padding:1.1rem 1.2rem;border:1px solid var(--border);border-radius:6px;background:rgba(0,0,0,.12)}
