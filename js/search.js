@@ -43,6 +43,16 @@
     '第十三面之后': 'hidden/aftermath.html'
   };
 
+  // 后期关键词：需玩家推进到一定程度（点亮≥10面镜子，即走过引入1999的节点10）才解锁
+  const LATE_KEYS = ['1999','失踪','审核员','手记','日志','创立','起源','始末','老板娘','城南','城南老街','之后','继承','第十三面之后','转录','最后一面镜子','红房间','redroom','证据'];
+  function gateOpen(matchKey) {
+    const late = LATE_KEYS.some(function (k) { return matchKey === k || matchKey.toLowerCase().indexOf(k) >= 0; });
+    if (!late) return true;
+    var lit = 0;
+    try { lit = (window.Progress && Progress.getProgress) ? Progress.getProgress() : parseInt(localStorage.getItem('progress') || '0', 10); } catch (e) {}
+    return lit >= 10;
+  }
+
   const KEY_H = 'searchHistory';
 
   function loadHistory() {
@@ -79,8 +89,16 @@
   function route(q) {
     const key = (q || '').trim().toLowerCase();
     if (!key) return null;
-    if (ROUTES[key]) return ROUTES[key];
-    for (const k in ROUTES) { if (key.indexOf(k) >= 0) return ROUTES[k]; }
+    if (ROUTES[key]) {
+      if (!gateOpen(key)) return '__LOCKED__';
+      return ROUTES[key];
+    }
+    for (const k in ROUTES) {
+      if (key.indexOf(k) >= 0) {
+        if (!gateOpen(k)) return '__LOCKED__';
+        return ROUTES[k];
+      }
+    }
     return null;
   }
 
@@ -144,7 +162,9 @@
         const v = input.value;
         localStorage.setItem('lastQuery', v);
         const dest = route(v);
-        if (dest) { pushHistory(v); location.href = siteBase() + dest; }
+        if (dest === '__LOCKED__') {
+          if (msg) msg.textContent = '“' + v + '” 在镜中还没有倒影……也许你还没走到那一夜。先去照照前面的镜子。';
+        } else if (dest) { pushHistory(v); location.href = siteBase() + dest; }
         else if (msg) msg.textContent = '“' + v + '” 在镜中没有任何倒影。再想想？';
       });
     }
@@ -152,7 +172,9 @@
     if (q) {
       localStorage.setItem('lastQuery', q);
       const dest = route(q);
-      if (dest) { pushHistory(q); location.href = siteBase() + dest; }
+      if (dest === '__LOCKED__') {
+        if (msg) msg.textContent = '“' + q + '” 在镜中还没有倒影……也许你还没走到那一夜。';
+      } else if (dest) { pushHistory(q); location.href = siteBase() + dest; }
     }
   });
 })();
