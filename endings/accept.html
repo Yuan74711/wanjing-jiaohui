@@ -54,7 +54,7 @@
     try { id = Progress.getId(); } catch (e) {}
     document.getElementById('pid').textContent = id;
     document.getElementById('pid2').textContent = id;
-    try { Progress.setProgress(13); Progress.setChapter(5); } catch (e) {}
+    try { Progress.setChapter(5); } catch (e) {}
     try { Drone.start({ freq: 24, level: 0.2 }); } catch (e) {}
   })();
 </script>

@@ -91,7 +91,6 @@
     var last = localStorage.getItem('lastQuery');
     if (last) post(last);
   } catch (e) {}
-  try { Progress.setProgress(13); } catch (e) {}
   try { Drone.start({ freq: 39, level: 0.07 }); } catch (e) {}
 </script>
 </body>
